@@ -91,7 +91,7 @@ const Navbar = () => {
           <div className="block lg:hidden">
             <Sheet>
               <SheetTrigger className="pt-[51px] pb-[50px]">
-                <div className="text-2xl py-1 px-2 bg-gray-100 rounded-lg">
+                <div className={`text-2xl py-1 px-2 ${isSticky ? "text-black" : "text-white"}`}>
                   <GiHamburgerMenu />
                 </div>
               </SheetTrigger>
