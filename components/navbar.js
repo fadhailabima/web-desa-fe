@@ -1,12 +1,11 @@
 import React from "react";
-import Container from "./container";
+import CustomContainer from "./customContainer";
 import Link from "next/link";
-import Image from "next/image";
 
 const Navbar = () => {
   return (
     <section className="font-poppins px-5">
-      <Container>
+      <CustomContainer>
         <div className="flex justify-between">
           <div className="flex pt-[21px] pb-[23px]">
             <img
@@ -57,11 +56,9 @@ const Navbar = () => {
               <span className="absolute bottom-10 left-0 w-full h-0.5 bg-primary transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
             </Link>
           </div>
-          <div className="block lg:hidden">
-            
-          </div>
+          <div className="block lg:hidden"></div>
         </div>
-      </Container>
+      </CustomContainer>
     </section>
   );
 };
