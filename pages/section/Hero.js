@@ -45,7 +45,10 @@ const Hero = () => {
               playsInline
               className="-z-20 absolute inset-0 object-cover w-full h-full"
             >
-              <source src="/video.mp4" type="video/mp4" />
+              <source
+                src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+                type="video/mp4"
+              />
             </video>
           </>
         ) : (
