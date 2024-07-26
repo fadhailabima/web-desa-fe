@@ -19,7 +19,7 @@ const ApaKataMereka = () => {
         <p className="text-center text-xl font-normal my-4">
           Review dari beberapa orang yang pernah kunjung ke Desa Punjulharjo
         </p>
-        <div className="max-w-[275px] sm:max-w-[500px] mx-auto my-[30px]">
+        <div className="max-w-[250px] sm:max-w-[500px] mx-auto my-[30px]">
           <Carousel>
             <CarouselContent>
               {apakatamereka.map((data) => (
