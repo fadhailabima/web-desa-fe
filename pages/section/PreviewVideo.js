@@ -16,12 +16,12 @@ const PreviewVideo = () => {
               <img src={`${data.thumbnail}`} alt="image thumbnail" className="max-w-[100%] h-[270px] rounded-lg"/>
               <h1 className="text-2xl font-medium">{data.judul}</h1>
               <p className="text-lg">{data.deskripsi}</p>
-              <Link href="" className="text-lg mt-2 inline-block py-2 px-6 bg-primary text-white rounded-lg hover:opacity-90">Lihat Lebih Lanjut</Link>
+              <Link href="" className="text-lg mt-2 inline-block py-2 px-6 bg-primary text-white rounded-md hover:opacity-90">Lihat Lebih Lanjut</Link>
             </div>
           ))}
         </div>
         <div className="flex justify-center">
-          <Link href="/kumpulan-video" className="text-3xl py-2 px-6 font-medium bg-primary text-white rounded-lg hover:opacity-90">Lihat Semua Video</Link>
+          <Link href="/kumpulan-video" className="text-2xl py-2 px-6 font-medium bg-primary text-white rounded-lg hover:opacity-90">Lihat Semua Video</Link>
         </div>
       </CustomContainer>
     </section>

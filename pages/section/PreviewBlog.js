@@ -16,12 +16,12 @@ const PreviewBlog = () => {
               <img src={`${data.thumbnail}`} alt="image thumbnail" className="max-w-[100%] h-[270px] rounded-lg"/>
               <h1 className="text-2xl font-medium">{data.judul}</h1>
               <p className="text-lg">{data.deskripsi}</p>
-              <Link href="" className="text-lg mt-2 inline-block py-2 px-6 bg-primary text-white rounded-lg hover:opacity-90">Baca Lebih Lanjut</Link>
+              <Link href="" className="text-md mt-2 inline-block py-2 px-6 bg-primary text-white rounded-lg hover:opacity-90">Baca Lebih Lanjut</Link>
             </div>
           ))}
         </div>
         <div className="flex justify-center">
-          <Link href="/blog" className="text-3xl py-2 px-6 font-medium bg-primary text-white rounded-lg hover:opacity-90">Lihat Blog</Link>
+          <Link href="/blog" className="text-2xl py-2 px-6 font-medium bg-primary text-white rounded-lg hover:opacity-90">Lihat Blog</Link>
         </div>
       </CustomContainer>
     </section>

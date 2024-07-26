@@ -31,7 +31,7 @@ const Blog = () => {
                 <p className="text-lg">{data.deskripsi}</p>
                 <Link
                   href=""
-                  className="text-lg mt-2 inline-block py-2 px-6 bg-primary text-white rounded-lg hover:opacity-90"
+                  className="text-md mt-2 inline-block py-2 px-6 bg-primary text-white rounded-lg hover:opacity-90"
                 >
                   Baca Lebih Lanjut
                 </Link>
