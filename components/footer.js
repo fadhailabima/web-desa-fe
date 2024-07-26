@@ -51,7 +51,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <h1>Copy Right © Desgined by <Link className="hover:underline" href="https://github.com/aliflikescoding" target="_">Aliflikescoding</Link></h1>
+        <h1>Copy Right © Developed by <Link className="hover:underline" href="https://github.com/aliflikescoding" target="_">Aliflikescoding</Link></h1>
       </CustomContainer>
     </section>
   );
