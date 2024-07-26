@@ -30,7 +30,7 @@ const Hero = () => {
           <Link
             href="https://gallery.desawisatapunjulharjo.com/"
             target="_blank"
-            className="text-xl sm:text-4xl font-semibold mt-2 inline-block py-3 px-6 bg-primary text-white rounded-lg"
+            className="text-xl sm:text-4xl font-semibold mt-2 inline-block py-3 px-6 bg-primary text-white rounded-lg hover:opacity-90"
           >
             Situs Perahu Kuno
           </Link>

@@ -38,7 +38,7 @@ const Footer = () => {
           <div className="mt-12 md:mt-0">
             <h1 className="text-2xl">Informasi Tambahan</h1>
             <div className="">
-              <Link href="https://gallery.desawisatapunjulharjo.com/" target="_" className="mt-2 inline-block py-2 px-6 bg-primary text-white rounded-lg">Situs Perahu Kuno</Link>
+              <Link href="https://gallery.desawisatapunjulharjo.com/" target="_" className="mt-2 inline-block py-2 px-6 bg-primary text-white rounded-lg hover:opacity-90">Situs Perahu Kuno</Link>
               <h1 className="py-3">Lokasi Kami</h1>
               <iframe
                 className="rounded-lg max-w-[325px] min-h-[400px]"
