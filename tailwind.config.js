@@ -14,12 +14,16 @@ module.exports = {
       padding: "2rem",
       screens: {
         "2xl": "1400px",
+        sm: "600px",
+        md: "601px",
+        lg: "1025px",
       },
     },
     extend: {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
         salsa: ["Salsa", "cursive"],
+        montserrat: ["Montserrat", "sans-serif"],
       },
       colors: {
         primary: "#45CCF5",
