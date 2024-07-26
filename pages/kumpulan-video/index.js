@@ -30,7 +30,7 @@ const KumpulanVideo = () => {
                 <h1 className="text-2xl font-medium">{data.judul}</h1>
                 <p className="text-lg">{data.deskripsi}</p>
                 <Link
-                  href=""
+                  href={`kumpulan-video/${data.judul.toLowerCase().replace(/ /g, '-')}`}
                   className="text-md mt-2 inline-block py-2 px-6 bg-primary text-white rounded-lg hover:opacity-90"
                 >
                   Lihat Lebih Lanjut
