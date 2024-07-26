@@ -4,7 +4,14 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <section className="p-5 font-poppins bg-white z-20">
+    <section
+      className="p-5 font-poppins bg-white z-20"
+      style={{
+        background: "rgb(69,204,245)",
+        background:
+          "linear-gradient(0deg, rgba(69,204,245,0.6699054621848739) 0%, rgba(195,241,255,0.7847514005602241) 16%, rgba(255,255,255,0.711922268907563) 48%, rgba(255,255,255,0.7763480392156863) 80%)",
+      }}
+    >
       <CustomContainer>
         <div className="flex justify-between flex-wrap">
           <div className="md:max-w-[25%] mt-12 md:mt-0">
@@ -29,16 +36,47 @@ const Footer = () => {
           </div>
           <div className="flex flex-col mt-12 md:mt-0">
             <h1 className="text-2xl my-2 font-normal">Halaman</h1>
-            <Link href="/" className="text-xl my-2 opacity-65 font-normal hover:underline">Beranda</Link>
-            <Link href="/tentang" className="text-xl my-2 opacity-65 font-normal hover:underline">Tentang</Link>
-            <Link href="/kumpulan-video" className="text-xl my-2 opacity-65 font-normal hover:underline">Kumpulan Video</Link>
-            <Link href="/blog" className="text-xl my-2 opacity-65 font-normal hover:underline">Blog</Link>
-            <Link href="/temukan-kami" className="text-xl my-2 opacity-65 font-normal hover:underline">Temukan Kami</Link>
+            <Link
+              href="/"
+              className="text-xl my-2 opacity-65 font-normal hover:underline"
+            >
+              Beranda
+            </Link>
+            <Link
+              href="/tentang"
+              className="text-xl my-2 opacity-65 font-normal hover:underline"
+            >
+              Tentang
+            </Link>
+            <Link
+              href="/kumpulan-video"
+              className="text-xl my-2 opacity-65 font-normal hover:underline"
+            >
+              Kumpulan Video
+            </Link>
+            <Link
+              href="/blog"
+              className="text-xl my-2 opacity-65 font-normal hover:underline"
+            >
+              Blog
+            </Link>
+            <Link
+              href="/temukan-kami"
+              className="text-xl my-2 opacity-65 font-normal hover:underline"
+            >
+              Temukan Kami
+            </Link>
           </div>
           <div className="mt-12 md:mt-0">
             <h1 className="text-2xl">Informasi Tambahan</h1>
             <div className="">
-              <Link href="https://gallery.desawisatapunjulharjo.com/" target="_" className="mt-2 inline-block py-2 px-6 bg-primary text-white rounded-lg hover:opacity-90">Situs Perahu Kuno</Link>
+              <Link
+                href="https://gallery.desawisatapunjulharjo.com/"
+                target="_"
+                className="mt-2 inline-block py-2 px-6 bg-primary text-white rounded-lg hover:opacity-90"
+              >
+                Situs Perahu Kuno
+              </Link>
               <h1 className="py-3">Lokasi Kami</h1>
               <iframe
                 className="rounded-lg max-w-[325px] min-h-[400px]"
@@ -51,7 +89,16 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <h1>Copy Right © Developed by <Link className="hover:underline" href="https://github.com/aliflikescoding" target="_">Aliflikescoding</Link></h1>
+        <h1>
+          Copy Right © Developed by{" "}
+          <Link
+            className="hover:underline"
+            href="https://github.com/aliflikescoding"
+            target="_"
+          >
+            Aliflikescoding
+          </Link>
+        </h1>
       </CustomContainer>
     </section>
   );
