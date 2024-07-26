@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <section className="p-5 font-poppins">
+    <section className="p-5 font-poppins bg-white z-20">
       <CustomContainer>
         <div className="flex justify-between flex-wrap">
           <div className="md:max-w-[25%] mt-12 md:mt-0">

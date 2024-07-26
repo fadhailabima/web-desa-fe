@@ -19,6 +19,7 @@ module.exports = {
     extend: {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
+        salsa: ["Salsa", "cursive"],
       },
       colors: {
         primary: "#45CCF5",
