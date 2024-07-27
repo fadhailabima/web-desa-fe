@@ -143,3 +143,18 @@ export const kumpulanblog = [
     ],
   },
 ];
+
+export const wisata = [
+  {
+    id: 0,
+    title: "Perahu Kuno",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse",
+    image: "/boat.jpeg",
+  },
+  {
+    id: 1,
+    title: "Pantai",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse",
+    image: "/pantai.jpeg",
+  }
+]
