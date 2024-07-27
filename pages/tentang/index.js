@@ -47,7 +47,7 @@ const tentang = () => {
                   </div>
                   <div>
                     <h1 className="text-3xl text-primary">2</h1>
-                    <h2 className="text-xl">Tahun Amip Cinlok</h2>
+                    <h2 className="text-xl">Tahun Berdiri</h2>
                   </div>
                 </div>
               </div>
