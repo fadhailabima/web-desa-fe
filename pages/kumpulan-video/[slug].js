@@ -49,7 +49,10 @@ const VideoPost = ({ video }) => {
             />
             <div className="mt-4 text-left">
               {video.artikel.map((paragraph, index) => (
-                <p key={index} className="text-base sm:text-lg mb-4 leading-[180%]">
+                <p
+                  key={index}
+                  className="text-base sm:text-lg mb-4 leading-[180%]"
+                >
                   {paragraph}
                 </p>
               ))}

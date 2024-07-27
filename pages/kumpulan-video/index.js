@@ -5,6 +5,7 @@ import { kumpulanvideo } from "../data";
 import NavbarPadder from "@/components/navbarPadder";
 import Link from "next/link";
 import TopBlur from "@/components/topBlur";
+import VideoPlayer from "@/components/VideoPlayer";
 
 const KumpulanVideo = () => {
   return (
@@ -22,15 +23,16 @@ const KumpulanVideo = () => {
                 key={data.id}
                 className="border-2 p-7 rounded-lg flex items-center flex-col gap-3"
               >
-                <img
-                  src={`${data.thumbnail}`}
-                  alt="image thumbnail"
+                <VideoPlayer
+                  src={`${data.video}`}
                   className="max-w-[100%] h-[270px] rounded-lg"
                 />
                 <h1 className="text-2xl font-medium">{data.judul}</h1>
                 <p className="text-lg">{data.deskripsi}</p>
                 <Link
-                  href={`kumpulan-video/${data.judul.toLowerCase().replace(/ /g, '-')}`}
+                  href={`kumpulan-video/${data.judul
+                    .toLowerCase()
+                    .replace(/ /g, "-")}`}
                   className="text-md mt-2 inline-block py-2 px-6 bg-primary text-white rounded-lg hover:opacity-90"
                 >
                   Lihat Lebih Lanjut

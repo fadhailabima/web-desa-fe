@@ -13,10 +13,12 @@ module.exports = {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1400px",
+        xs: "480px",
         sm: "600px",
-        md: "601px",
-        lg: "1025px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
+        "2xl": "1400px",
       },
     },
     extend: {
@@ -25,8 +27,17 @@ module.exports = {
         salsa: ["Salsa", "cursive"],
         montserrat: ["Montserrat", "sans-serif"],
       },
+      maxWidth: {
+        95: "95%",
+      },
+      spacing: {
+        60: "15rem",
+        2: "0.5rem",
+      },
       colors: {
         primary: "#45CCF5",
+        "gray-600": "#3f3f46",
+        "gray-100": "#f5f5f5",
       },
       keyframes: {
         "accordion-down": {

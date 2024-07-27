@@ -1,9 +1,19 @@
 import React from 'react'
+import Layout from "@/components/layout";
+import CustomContainer from '@/components/customContainer';
+import NavbarPadder from "@/components/navbarPadder";
 
-const index = () => {
+const ExploreWisata = () => {
   return (
-    <div>index</div>
+    <Layout>
+      <section className='bg-teal-100 h-[200vh]'>
+        <NavbarPadder />
+        <CustomContainer>
+          <h1 className="">ExploreWisata</h1>
+        </CustomContainer>
+      </section>
+    </Layout>
   )
 }
 
-export default index
+export default ExploreWisata
