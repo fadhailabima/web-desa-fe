@@ -14,12 +14,12 @@ const ExploreWisata = () => {
         <CustomContainer>
           <div className='px-5'>
             {wisata.map((data) => (
-              <div key={data.id} className='flex border-2 my-12 p-8 rounded-lg shadow-xl'>
-                <div className='max-w-[50%]'>
+              <div key={data.id} className='flex flex-col lg:flex-row border-2 my-12 p-8 rounded-lg shadow-xl'>
+                <div className='lg:max-w-[50%]'>
                   <h1 className='text-3xl font-medium my-3'>{data.title}</h1>
                   <p className='text-base leading-[160%]'>{data.description}</p>
                 </div>
-                <div className='w-full ml-3'>
+                <div className='w-full lg:ml-3 my-8 lg:my-0'>
                   <img className='w-full rounded-lg' src={data.image} alt='wisata image' />
                 </div>
               </div>
