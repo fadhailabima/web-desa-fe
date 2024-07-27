@@ -16,7 +16,7 @@ const PreviewBlog = () => {
               <img src={`${data.thumbnail}`} alt="image thumbnail" className="max-w-[100%] h-[270px] rounded-lg"/>
               <h1 className="text-2xl font-medium">{data.judul}</h1>
               <p className="text-lg">{data.deskripsi}</p>
-              <Link href="" className="text-md mt-2 inline-block py-2 px-6 bg-primary text-white rounded-lg hover:opacity-90">Baca Lebih Lanjut</Link>
+              <Link href={`blog/${data.judul.toLowerCase().replace(/ /g, '-')}`} className="text-md mt-2 inline-block py-2 px-6 bg-primary text-white rounded-lg hover:opacity-90">Baca Lebih Lanjut</Link>
             </div>
           ))}
         </div>

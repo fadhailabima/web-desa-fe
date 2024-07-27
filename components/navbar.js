@@ -73,7 +73,7 @@ const Navbar = () => {
               <span className="absolute bottom-10 left-0 w-full h-0.5 bg-primary transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
             </Link>
             <Link
-              href="/tentang"
+              href="/explore-wisata"
               className="mr-[25px] pt-[51px] pb-[50px] inline-block relative group transition-colors duration-300 ease-in-out hover:text-primary"
             >
               Explore Wisata
