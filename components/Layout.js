@@ -1,3 +1,4 @@
+// Layout.js
 import React from "react";
 import Footer from "./footer";
 import Navbar from "./navbar";
@@ -5,13 +6,13 @@ import { useRouter } from "next/router";
 
 const Layout = ({ children }) => {
   const router = useRouter();
-  const isLoginPage = router.pathname === "/login";
+  const isSpecialPage = ["/login", "/dashboard"].includes(router.pathname);
 
   return (
     <>
-      {!isLoginPage && <Navbar />}
+      {!isSpecialPage && <Navbar />}
       <main>{children}</main>
-      {!isLoginPage && <Footer />}
+      {!isSpecialPage && <Footer />}
     </>
   );
 };

@@ -1,28 +1,21 @@
+// components/LogoutPopup.jsx
 import React from "react";
 
 const LogoutPopup = ({ onConfirm, onCancel }) => {
   return (
-    <div className="fixed inset-0 flex justify-center items-center z-50 bg-black bg-opacity-50 overflow-hidden">
-      <div className="bg-white p-5 rounded-lg text-center max-w-4/5 sm:max-w-9/10 xs:max-w-95 overflow-hidden relative z-50">
-        <h1 className="text-3xl font-bold mb-6">
-          Apakah Anda Yakin Ingin Keluar?
-        </h1>
-        <div className="flex justify-center space-x-2.5">
-          <button
-            className="border border-black px-5 py-2.5 rounded-md cursor-pointer bg-green-500"
-            onClick={onConfirm}
-          >
-            Ya
+    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+      <div className="bg-white p-4 rounded shadow-lg">
+        <h2 className="text-lg font-semibold">Confirm Logout</h2>
+        <p>Are you sure you want to logout?</p>
+        <div className="flex justify-end gap-4 mt-4">
+          <button className="px-4 py-2 bg-red-500 text-white rounded" onClick={onConfirm}>
+            Yes
           </button>
-          <button
-            className="border border-black px-5 py-2.5 rounded-md cursor-pointer bg-red-500"
-            onClick={onCancel}
-          >
-            Tidak
+          <button className="px-4 py-2 bg-gray-300 rounded" onClick={onCancel}>
+            No
           </button>
         </div>
       </div>
-      <div className="fixed inset-0 bg-transparent z-40"></div>
     </div>
   );
 };

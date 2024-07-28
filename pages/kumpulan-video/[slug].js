@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import Layout from "@/components/layout";
+import Layout from "@/components/Layout";
 import CustomContainer from "@/components/customContainer";
 import { kumpulanvideo } from "../data";
 import TopBlur from "@/components/topBlur";

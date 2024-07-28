@@ -1,6 +1,8 @@
+// pages/dashboard.js
+import React from "react";
+import LayoutAdmin from "@/components/LayoutAdmin";
 import Dashboard from "../section/Dashboard";
 import Head from "next/head";
-import React from "react";
 
 export async function getServerSideProps(context) {
   return {
@@ -10,15 +12,15 @@ export async function getServerSideProps(context) {
   };
 }
 
-const dashboard = (props) => {
+const DashboardPage = (props) => {
   return (
-    <>
+    <LayoutAdmin includeHeader={false}>
       <Head>
         <title>Dashboard</title>
       </Head>
       <Dashboard {...props} />
-    </>
+    </LayoutAdmin>
   );
 };
 
-export default dashboard;
+export default DashboardPage;
