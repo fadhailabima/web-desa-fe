@@ -13,7 +13,7 @@ const Dashboard = ({ isAdmin }) => {
     <main className="flex-1 max-h-full p-5">
       <div className="flex flex-col items-start justify-between pb-6 gap-4 border-b border-gray-300 lg:flex-row lg:items-center lg:gap-0">
         <h1 className="text-3xl font-semibold whitespace-nowrap">
-          {isAdmin ? "Admin Dashboard" : "User Dashboard"}
+          Admin Dashboard
         </h1>
       </div>
       <PopUp text={popupText} isOpen={showPopup} type={popupType} />
