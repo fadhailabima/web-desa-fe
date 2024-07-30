@@ -5,16 +5,14 @@ import LayoutAdmin from "../components/LayoutAdmin";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
-  const isAdminPage = router.pathname.startsWith("/admin");
-  const isDashboardPage = router.pathname === "/dashboard";
 
-  if (isAdminPage) {
-    return (
-      <LayoutAdmin includeHeader={!isDashboardPage}>
-        <Component {...pageProps} />
-      </LayoutAdmin>
-    );
-  }
+  // if (isAdminPage) {
+  //   return (
+  //     <LayoutAdmin includeHeader={!isDashboardPage}>
+  //       <Component {...pageProps} />
+  //     </LayoutAdmin>
+  //   );
+  // }
 
   return (
     <Layout>
