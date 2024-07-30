@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import { useRouter } from "next/router";
-import Layout from "@/components/Layout";
+import Layout from "@/components/layout";
 import LayoutAdmin from "@/components/LayoutAdmin";
 
 export default function App({ Component, pageProps }) {
