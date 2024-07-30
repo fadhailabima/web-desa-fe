@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import { Icon } from "@iconify/react";
 import LogoutPopup from "@/components/LogoutPopup";
 import { logout } from "@/services/auth";
 
-const Sidebar = () => {
+const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   const router = useRouter();
-  const [showLogoutPopup, setShowLogoutPopup] = useState(false);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [showLogoutPopup, setShowLogoutPopup] = React.useState(false);
 
   const handleLogout = async () => {
     try {
@@ -35,23 +34,29 @@ const Sidebar = () => {
   return (
     <>
       <button
-        className="fixed top-8 left-4 bg-transparent border-none cursor-pointer z-50 lg:hidden"
+        className="menu-button fixed top-8 left-4 bg-transparent border-none cursor-pointer z-50 lg:hidden"
         onClick={() => setSidebarOpen(!sidebarOpen)}
       >
         <Icon icon="lucide:menu" width="24" height="24" />
       </button>
       <div
-        className={`fixed bg-white h-screen w-64 transform transition-transform duration-300 ease-in-out z-40 ${
+        className={`sidebar fixed bg-white h-screen w-64 transform transition-transform duration-300 ease-in-out z-40 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } lg:w-80 lg:-translate-x-0`}
+        } lg:w-80 lg:translate-x-0`}
       >
         <div className="flex flex-col gap-6 w-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-white">
-          <div className="flex justify-start items-start p-4">
+          <div className="flex justify-between items-center p-4">
             <img
               src="https://pub-edda528035cd4ca0bd9748f53558db9c.r2.dev/public%2Fassets%2Fimages%2Flogo.png"
               className="w-24 h-auto"
               alt="Logo"
             />
+            <button
+              className="menu-button bg-transparent border-none cursor-pointer lg:hidden"
+              onClick={() => setSidebarOpen(false)}
+            >
+              <Icon icon="lucide:x" width="24" height="24" />
+            </button>
           </div>
           <div className="flex flex-col gap-5 px-4 py-2">
             <Link
