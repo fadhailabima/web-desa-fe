@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import React, { useState } from "react";
 import dynamic from "next/dynamic";
 
 const PopUp = dynamic(() => import("@/components/Popup"), { ssr: false });
@@ -17,8 +16,9 @@ const Dashboard = ({ isAdmin }) => {
         </h1>
       </div>
       <PopUp text={popupText} isOpen={showPopup} type={popupType} />
-      <div className="grid grid-cols-3 gap-6 mt-8 w-full">
+      <div className="grid grid-cols-1 gap-6 mt-8 w-full md:grid-cols-2 lg:grid-cols-3">
         <div className="w-full overflow-hidden">
+          {/* Placeholder for Chart or other components */}
           {/* <Chart
             options={polarAreaChartOptions}
             series={polarAreaChartSeries}
@@ -26,6 +26,7 @@ const Dashboard = ({ isAdmin }) => {
             height={350}
           /> */}
         </div>
+        {/* Tambahkan lebih banyak card atau komponen di sini */}
       </div>
     </main>
   );

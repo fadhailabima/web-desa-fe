@@ -40,9 +40,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
         <Icon icon="lucide:menu" width="24" height="24" />
       </button>
       <div
-        className={`sidebar fixed bg-white h-screen w-64 transform transition-transform duration-300 ease-in-out z-40 ${
+        className={`fixed bg-white h-screen w-64 transform transition-transform duration-300 ease-in-out z-40 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } lg:w-80 lg:translate-x-0`}
+        } lg:w-80 lg:translate-x-0 lg:static lg:translate-x-0`}
       >
         <div className="flex flex-col gap-6 w-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-white">
           <div className="flex justify-between items-center p-4">
