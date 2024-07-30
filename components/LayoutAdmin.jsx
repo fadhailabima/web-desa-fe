@@ -10,7 +10,7 @@ export default function LayoutAdmin({ children }) {
     //   event.preventDefault();
     // };
 
-    // document.addEventListener('contextmenu', handleContextMenu);
+    // document.addEventListener('contexgit tmenu', handleContextMenu);
 
     // return () => {
     //   document.removeEventListener('contextmenu', handleContextMenu);
