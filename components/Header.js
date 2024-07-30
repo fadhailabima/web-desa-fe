@@ -1,22 +1,26 @@
 import React from "react";
 import Link from "next/link";
-// import { useSelectedLayoutSegment } from "next/navigation"; // Commented out if not used
-import { useRouter } from "next/router"; // Import the useRouter hook
+import { useSelectedLayoutSegment } from "next/navigation"; // Commented out if not used
+import useScroll from "@/hooks/use-scroll";
+import { cn } from "@/lib/utils";
 
 const Header = () => {
-  // const selectedLayout = useSelectedLayoutSegment(); // Commented out if not used
-  const router = useRouter();
+  const scrolled = useScroll(5);
+  const selectedLayout = useSelectedLayoutSegment();
 
   return (
     <div
-      className={`sticky left-0 right-0 top-0 z-30 w-full transition-all duration-200 ease-in-out border-b border-gray-300 ${
-        // selectedLayout ? "bg-white border-b border-gray-300" : ""
-        router.pathname !== "/" ? "bg-white border-b border-gray-300" : ""
-      }`}
+      className={cn(
+        `sticky inset-x-0 top-0 z-30 w-full transition-all border-b border-gray-200`,
+        {
+          "border-b border-gray-200 bg-white/75 backdrop-blur-lg": scrolled,
+          "border-b border-gray-200 bg-white": selectedLayout,
+        }
+      )}
     >
-      <div className="flex items-center justify-center h-14 px-4">
+      <div className="flex h-[55px] items-center justify-center px-4">
         <div className="hidden md:block">
-          <span className="font-semibold text-pink-600 text-sm">
+          <span className="font-semibold text-sm text-green-600">
             Desa Wisata Punjulharjo
           </span>
         </div>

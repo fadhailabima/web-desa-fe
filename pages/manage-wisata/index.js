@@ -1,7 +1,7 @@
 // pages/dashboard.js
 import React from "react";
 import LayoutAdmin from "@/components/LayoutAdmin";
-import Dashboard from "../section/Dashboard";
+import ManageWisata from "../section/Wisata";
 import Head from "next/head";
 
 export async function getServerSideProps(context) {
@@ -12,15 +12,15 @@ export async function getServerSideProps(context) {
   };
 }
 
-const DashboardPage = (props) => {
+const ManageWisataPage = (props) => {
   return (
     <LayoutAdmin>
       <Head>
-        <title>Dashboard</title>
+        <title>Manage Wisata</title>
       </Head>
-      <Dashboard {...props} />
+      <ManageWisata {...props} />
     </LayoutAdmin>
   );
 };
 
-export default DashboardPage;
+export default ManageWisataPage;

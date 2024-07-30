@@ -1,7 +1,7 @@
 // pages/dashboard.js
 import React from "react";
 import LayoutAdmin from "@/components/LayoutAdmin";
-import Dashboard from "../section/Dashboard";
+import Video from "../section/Video";
 import Head from "next/head";
 
 export async function getServerSideProps(context) {
@@ -12,15 +12,15 @@ export async function getServerSideProps(context) {
   };
 }
 
-const DashboardPage = (props) => {
+const ManageVideoPage = (props) => {
   return (
     <LayoutAdmin>
       <Head>
-        <title>Dashboard</title>
+        <title>Manage Video</title>
       </Head>
-      <Dashboard {...props} />
+      <Video {...props} />
     </LayoutAdmin>
   );
 };
 
-export default DashboardPage;
+export default ManageVideoPage;

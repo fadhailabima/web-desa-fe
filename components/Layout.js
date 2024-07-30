@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 
 const Layout = ({ children }) => {
   const router = useRouter();
-  const isSpecialPage = ["/login", "/dashboard"].includes(router.pathname);
+  const isSpecialPage = ["/login", "/dashboard", "/video", "/manage-blog", "/manage-wisata"].includes(router.pathname);
 
   return (
     <>
