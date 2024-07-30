@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "@/components/layout";
+import Layout from "@/components/Layout";
 import CustomContainer from "@/components/customContainer";
 import { kumpulanvideo } from "../data";
 import NavbarPadder from "@/components/navbarPadder";

@@ -1,10 +1,11 @@
+// pages/login.js
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { loginapi } from "@/services/auth";
 import { FaEye } from "react-icons/fa";
 import PopUp from "@/components/Popup";
 
-const login = () => {
+const LoginPage = () => {
   const [signIn, setSignIn] = useState(true);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -182,4 +183,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default LoginPage;
