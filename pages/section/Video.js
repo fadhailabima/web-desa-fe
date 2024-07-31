@@ -47,7 +47,7 @@ const Video = ({ isAdmin }) => {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <div className="dashboard-button-area">
-            <Link href="/tambahBlog">
+            <Link href="/tambahVideo">
               <button className="mt-6 border-white border px-2.5 py-1 rounded-md bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white hover:bg-gray-100 hover:text-black ml-2.5">
                 Tambah Video
               </button>

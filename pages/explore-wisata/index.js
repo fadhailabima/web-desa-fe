@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 import Layout from "@/components/Layout";
-import CustomContainer from '@/components/customContainer';
+import CustomContainer from "@/components/customContainer";
 import NavbarPadder from "@/components/navbarPadder";
 import TopBlur from "@/components/topBlur";
-import { wisata } from '../data';
+import { wisata } from "../data";
 
 const ExploreWisata = () => {
   return (
@@ -12,15 +12,22 @@ const ExploreWisata = () => {
         <NavbarPadder />
         <TopBlur />
         <CustomContainer>
-          <div className='px-5'>
+          <div className="px-5">
             {wisata.map((data) => (
-              <div key={data.id} className='flex flex-col lg:flex-row border-2 my-12 p-8 rounded-lg shadow-xl'>
-                <div className='lg:max-w-[50%]'>
-                  <h1 className='text-3xl font-medium my-3'>{data.title}</h1>
-                  <p className='text-base leading-[160%]'>{data.description}</p>
+              <div
+                key={data.id}
+                className="flex flex-col lg:flex-row border-2 my-12 p-8 rounded-lg shadow-xl"
+              >
+                <div className="lg:max-w-[50%]">
+                  <h1 className="text-3xl font-medium my-3">{data.title}</h1>
+                  <p className="text-base leading-[160%]">{data.description}</p>
                 </div>
-                <div className='w-full lg:ml-3 my-8 lg:my-0'>
-                  <img className='w-full rounded-lg' src={data.image} alt='wisata image' />
+                <div className="w-full lg:ml-3 my-8 lg:my-0">
+                  <img
+                    className="w-full rounded-lg"
+                    src={data.image}
+                    alt="wisata image"
+                  />
                 </div>
               </div>
             ))}
