@@ -73,7 +73,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               <span className="font-semibold text-xl flex">Manage Blog</span>
             </Link>
             <Link
-              href="/manage-map
+              href="/kategori-map
             "
               className="flex flex-row space-x-4 items-center p-2 rounded-lg hover:bg-zinc-100"
             >

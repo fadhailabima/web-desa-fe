@@ -45,7 +45,7 @@ const ManageBlog = ({ isAdmin }) => {
         console.log("IOS deleted successfully");
         setDeletePopupVisible(false);
         setUserToDelete(null);
-        setPopupText("IOS Berhasil Dihapus");
+        setPopupText("Blog Berhasil Dihapus");
         setPopupType("success");
         setShowPopup(true);
         setTimeout(() => {
@@ -53,7 +53,7 @@ const ManageBlog = ({ isAdmin }) => {
         }, 1000);
       } catch (error) {
         console.log("Failed to delete IOS");
-        setPopupText("IOS Gagal Dihapus");
+        setPopupText("Blog Gagal Dihapus");
         setPopupType("error");
         setShowPopup(true);
       }
@@ -101,7 +101,7 @@ const ManageBlog = ({ isAdmin }) => {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <div className="dashboard-button-area">
-            <Link href="/tambahBlog">
+            <Link href="/tambah-blog">
               <button className="mt-6 border-white border px-2.5 py-1 rounded-md bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white hover:bg-gray-100 hover:text-black ml-2.5">
                 Tambah Blog
               </button>

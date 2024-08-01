@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import PopUp from "@/components/Popup";
-import { getKategori, deleteKategori } from "@/services/wisata";
+import { getKategoriMap, deleteKategoriMap } from "@/services/map";
 import DeletePopup from "@/components/DeletePopup";
 import { useRouter } from "next/router";
 
-const ManageWisata = ({ isAdmin }) => {
+const KategoriMap = ({ isAdmin }) => {
   const [kategori, setKategori] = useState([]);
   const [deletePopupVisible, setDeletePopupVisible] = useState(false);
   const [userToDelete, setUserToDelete] = useState(null);
@@ -15,7 +15,7 @@ const ManageWisata = ({ isAdmin }) => {
   const router = useRouter();
 
   const getAllKategori = async (token) => {
-    const res = await getKategori(token);
+    const res = await getKategoriMap(token);
     if (res) {
       setKategori(res);
     } else {
@@ -41,7 +41,7 @@ const ManageWisata = ({ isAdmin }) => {
     const token = localStorage.getItem("token");
     if (token) {
       try {
-        const res = await deleteKategori(token, userToDelete);
+        const res = await deleteKategoriMap(token, userToDelete);
         console.log("Divisi deleted successfully");
         setPopupText("Kategori Berhasil Dihapus");
         setPopupType("success");
@@ -71,10 +71,10 @@ const ManageWisata = ({ isAdmin }) => {
       <div className="flex-1 max-h-full p-5">
         <div className="flex flex-col justify-between items-center space-y-6 md:flex-row md:space-y-0">
           <h2 className="text-gray-500 mt-6 text-xl text-center font-semibold pb-1">
-            {isAdmin ? "Manage Wisata" : "Manage Wisata"}
+            {isAdmin ? "Manage Map" : "Manage Map"}
           </h2>
           <div className="dashboard-button-area">
-            <Link href="/tambahKategori">
+            <Link href="/tambahKategoriMap">
               <button className="mt-6 border-white border px-2.5 py-1 rounded-md bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white hover:bg-gray-100 hover:text-black ml-2.5">
                 Tambah Kategori
               </button>
@@ -115,7 +115,7 @@ const ManageWisata = ({ isAdmin }) => {
                             </td>
                             <td className="text-center py-4 text-sm text-black">
                               <span className="break-word">
-                                {item.kategori}
+                                {item.kategori_lokasi}
                               </span>
                             </td>
                             <td className="text-center py-4 text-sm text-black">
@@ -153,4 +153,4 @@ const ManageWisata = ({ isAdmin }) => {
   );
 };
 
-export default ManageWisata;
+export default KategoriMap;

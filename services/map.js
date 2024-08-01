@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export const getKategori = async (token) => {
+export const getKategoriMap = async (token) => {
   try {
     const res = await axios.get(
-      "https://apiku.desawisatapunjulharjo.com/api/category",
+      "https://apiku.desawisatapunjulharjo.com/api/catlocs",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -23,10 +23,10 @@ export const getKategori = async (token) => {
   }
 };
 
-export const deleteKategori = async (token, id) => {
+export const deleteKategoriMap = async (token, id) => {
   try {
     const res = await axios.delete(
-      `https://apiku.desawisatapunjulharjo.com/api/category/${id}`,
+      `https://apiku.desawisatapunjulharjo.com/api/catlocs/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -46,11 +46,11 @@ export const deleteKategori = async (token, id) => {
   }
 };
 
-export const addKategori = async (token, kategori) => {
+export const addKategoriMap = async (token, kategori_lokasi) => {
   try {
     const res = await axios.post(
-      "https://apiku.desawisatapunjulharjo.com/api/category",
-      { kategori },
+      "https://apiku.desawisatapunjulharjo.com/api/catlocs",
+      { kategori_lokasi },
       {
         headers: {
           Authorization: `Bearer ${token}`,

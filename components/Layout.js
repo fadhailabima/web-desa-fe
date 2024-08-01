@@ -12,6 +12,10 @@ const Layout = ({ children }) => {
     "/video",
     "/manage-blog",
     "/manage-wisata",
+    "/tambahKategori",
+    "/kategori-map",
+    "/tambahKategoriMap",
+    "/tambah-blog"
   ].includes(router.pathname);
 
   return (
