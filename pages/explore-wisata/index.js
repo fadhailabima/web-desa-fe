@@ -7,8 +7,7 @@ import { wisata } from "../data";
 
 const ExploreWisata = () => {
   return (
-    <Layout>
-      <section>
+    <section>
         <NavbarPadder />
         <TopBlur />
         <CustomContainer>
@@ -34,7 +33,6 @@ const ExploreWisata = () => {
           </div>
         </CustomContainer>
       </section>
-    </Layout>
   );
 };
 

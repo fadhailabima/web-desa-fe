@@ -24,15 +24,28 @@ const Popup = dynamic(() => import("react-leaflet").then((mod) => mod.Popup), {
 const temukanKami = () => {
   const position = [-6.1753924, 106.8271528];
   return (
-    <Layout>
-      <section className="font-poppins mb-[150px]">
-        <NavbarPadder />
-        <TopBlur />
-        <CustomContainer>
-          <MapContainer center={position} zoom={13} scrollWheelZoom={false} style={{height: "500px" , width: "100%"}}><TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' /><Marker position={position}><Popup><p className="text-center">Kantor Pusat</p></Popup></Marker></MapContainer>
-        </CustomContainer>
-      </section>
-    </Layout>
+    <section className="font-poppins mb-[150px]">
+      <NavbarPadder />
+      <TopBlur />
+      <CustomContainer>
+        <MapContainer
+          center={position}
+          zoom={13}
+          scrollWheelZoom={false}
+          style={{ height: "500px", width: "100%" }}
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          />
+          <Marker position={position}>
+            <Popup>
+              <p className="text-center">Kantor Pusat</p>
+            </Popup>
+          </Marker>
+        </MapContainer>
+      </CustomContainer>
+    </section>
   );
 };
 
