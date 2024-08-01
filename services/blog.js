@@ -2,11 +2,14 @@ import axios from "axios";
 
 export const getBlog = async (token) => {
   try {
-    const res = await axios.get("http://localhost:8000/api/news", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const res = await axios.get(
+      "https://apiku.desawisatapunjulharjo.com/api/news",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     if (res.data) {
       // console.log("Ios found :", res.data.data);
       return res.data.data;
@@ -22,11 +25,14 @@ export const getBlog = async (token) => {
 
 export const deleteBlog = async (token, id) => {
   try {
-    const res = await axios.delete(`https://localhost:8000/api/news/${id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const res = await axios.delete(
+      `https://apiku.desawisatapunjulharjo.com/api/news/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     if (res.data) {
       // console.log("Ios deleted:", res.data);
       return res.data;

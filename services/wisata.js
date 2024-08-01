@@ -2,11 +2,14 @@ import axios from "axios";
 
 export const getKategori = async (token) => {
   try {
-    const res = await axios.get("http://localhost:8000/api/category", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const res = await axios.get(
+      "https://apiku.desawisatapunjulharjo.com/api/category",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     if (res.data) {
       // console.log('Divisi found:', res.data.data);
       return res.data.data; // return the user data
@@ -22,11 +25,14 @@ export const getKategori = async (token) => {
 
 export const deleteKategori = async (token, id) => {
   try {
-    const res = await axios.delete(`http://localhost:8000/api/category/${id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const res = await axios.delete(
+      `https://apiku.desawisatapunjulharjo.com/api/category/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     if (res.data) {
       // console.log('Kabinet deleted:', res.data);
       return res.data; // return the response data

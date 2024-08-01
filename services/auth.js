@@ -2,10 +2,13 @@ import axios from "axios";
 
 export const loginapi = async (username, password) => {
   try {
-    const response = await axios.post("http://localhost:8000/api/login", {
-      username: username,
-      password: password,
-    });
+    const response = await axios.post(
+      "https://apiku.desawisatapunjulharjo.com/api/login",
+      {
+        username: username,
+        password: password,
+      }
+    );
 
     // console.log(response.data);
 
@@ -32,7 +35,7 @@ export const loginapi = async (username, password) => {
 export const logout = async (token) => {
   try {
     const response = await axios.post(
-      "http://localhost:8000/api/logout",
+      "https://apiku.desawisatapunjulharjo.com/api/logout",
       {},
       {
         headers: {
