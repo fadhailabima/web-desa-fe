@@ -54,7 +54,7 @@ const Video = ({ isAdmin }) => {
             </Link>
           </div>
         </div>
-        <div className="flex flex-1 max-h-full p-5">
+        <div className="p-5">
           <div className="content-manage flex flex-col mt-6">
             <div className="table-container -mx-6 -my-2 overflow-x-auto">
               <div className="table-wrapper inline-block min-w-full px-6 py-2 align-middle">
