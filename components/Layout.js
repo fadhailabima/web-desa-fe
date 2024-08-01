@@ -15,7 +15,8 @@ const Layout = ({ children }) => {
     "/tambahKategori",
     "/kategori-map",
     "/tambahKategoriMap",
-    "/tambah-blog"
+    "/tambah-blog",
+    "/manage-user",
   ].includes(router.pathname);
 
   return (

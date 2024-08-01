@@ -88,6 +88,14 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               <Icon icon="lucide:circle-fading-plus" width="24" height="24" />
               <span className="font-semibold text-xl flex">Manage Wisata</span>
             </Link>
+            <Link
+              href="/manage-user
+            "
+              className="flex flex-row space-x-4 items-center p-2 rounded-lg hover:bg-zinc-100"
+            >
+              <Icon icon="lucide:user-check" width="24" height="24" />
+              <span className="font-semibold text-xl flex">Manage User</span>
+            </Link>
             <div className="flex flex-col space-y-9 w-full">
               <AlertDialog>
                 <AlertDialogTrigger asChild>

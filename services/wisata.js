@@ -11,7 +11,7 @@ export const getKategori = async (token) => {
       }
     );
     if (res.data) {
-      // console.log('Divisi found:', res.data.data);
+      // console.log("Divisi found:", res.data.data);
       return res.data.data; // return the user data
     } else {
       // console.log('No divisi found');
