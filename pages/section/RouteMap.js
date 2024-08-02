@@ -2,13 +2,11 @@
 import PopUp from "@/components/Popup";
 import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
-import { MapContainer, TileLayer } from "react-leaflet";
 import { getMapById } from "@/services/map";
-import { useParams } from "next/navigation";
 
 const MapWithRouting = dynamic(() => import("@/components/route-map"), { ssr: false });
 
-const RouteMap = ({ id }) => {
+const RouteMap = ({ id, isAdmin }) => {
     const [position, setPosition] = useState({ lat: 0, lng: 0 });
     const [token, setToken] = useState("");
     const [lokasi, setLokasi] = useState({});
@@ -44,18 +42,22 @@ const RouteMap = ({ id }) => {
         }
     }, [id, token])
 
-  return (
-    <main className="h-full">
-      {/* <PopUp text={popupText} isOpen={showPopup} type={popupType} /> */}
-      <div className="container mx-auto">
-        <div className="flex items-center flex-row justify-between m-5">
-          <div className="container">
-            <MapWithRouting position={position} data={lokasi} />
-          </div>
-        </div>
-      </div>
-    </main>
-  );
+    const [showPopup, setShowPopup] = useState(false);
+    const [popupText, setPopupText] = useState("");
+    const [popupType, setPopupType] = useState("");
+
+    return (
+        <main className="h-full">
+            <PopUp text={popupText} isOpen={showPopup} type={popupType} />
+            <div className="container mx-auto">
+                <div className="flex items-center flex-row justify-between m-5">
+                <div className="container">
+                    <MapWithRouting position={position} data={lokasi} />
+                </div>
+                </div>
+            </div>
+        </main>
+    );
 };
 
 export default RouteMap;

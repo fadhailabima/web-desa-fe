@@ -5,11 +5,13 @@ import { createControlComponent } from "@react-leaflet/core";
 import "leaflet-routing-machine";
 
 const createRoutineMachineLayer = ({ position, data }) => {
+    const waypoints = [
+        L.latLng(position.lat, position.lng),
+        L.latLng(Number(data.latitude), Number(data.longitude))
+    ];
+
     const instance = L.Routing.control({
-        waypoints: [
-            L.latLng(position.lat, position.lng),
-            L.latLng(-6.6870926, 111.4120397)
-        ],
+        waypoints,
         lineOptions: {
             styles: [{ color: "#6FA1EC", weight: 4 }]
         },
@@ -37,7 +39,11 @@ export default function MapWithRouting({ data }) {
         });
     }, []);
 
-    return isLoaded ? (
+    const isValidLatLng = (value) => !isNaN(value) && value !== null;
+
+    const hasValidData = data && isValidLatLng(Number(data.latitude)) && isValidLatLng(Number(data.longitude));
+
+    return isLoaded && hasValidData ? (
         <MapContainer
             center={[position.lat, position.lng]}
             zoom={13}
