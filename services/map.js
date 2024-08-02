@@ -146,3 +146,27 @@ export const addMap = async (
     return null;
   }
 };
+
+export const getMapById = async (token, id) => {
+  try {
+    const res = await axios.get(
+      `https://apiku.desawisatapunjulharjo.com/api/locations/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    // console.log(res);
+    if (res.data) {
+      // console.log('Data found:', res.data.data);
+      return res.data.data; // return the whole data object
+    } else {
+      // console.log('No data found');
+      return null;
+    }
+  } catch (error) {
+    console.error("An error occurred while fetching the data:", error);
+    throw error; // re-throw the error
+  }
+};
