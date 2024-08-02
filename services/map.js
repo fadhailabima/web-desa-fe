@@ -150,7 +150,7 @@ export const addMap = async (
 export const getMapById = async (token, id) => {
   try {
     const res = await axios.get(
-      `https://apiku.desawisatapunjulharjo.com/api/locations/${id}`,
+      `https://apiku.desawisatapunjulharjo.com/api/locationsById/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
