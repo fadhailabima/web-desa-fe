@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { useRouter } from "next/router";
 import PopUp from "@/components/Popup";
-import { createBlog } from "@/services/blog";
+import { createVideo } from "@/services/video";
 import "quill/dist/quill.snow.css";
 
 const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
@@ -12,25 +12,21 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   loading: () => <p>Loading ...</p>,
 });
 
-const TambahBlog = ({ isAdmin }) => {
+const TambahVideo = ({ isAdmin }) => {
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState("");
   const [titleSm, setTitleSm] = useState("");
   const [subtitleSm, setSubtitleSm] = useState("");
   const [content, setDescription] = useState("");
   const [inputDate, setInputDate] = useState("");
-  const [cover, setCover] = useState("");
+  const [video, setVideo] = useState("");
   const [error, setError] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [popupText, setPopupText] = useState("");
   const [popupType, setPopupType] = useState("");
   const router = useRouter();
 
-  const handleFileChangeFoto = (e) => {
-    setCover(e.target.files[0]);
-  };
-
-  const handleAddBlog = async (e) => {
+  const handleAddVideo = async (e) => {
     e.preventDefault();
     if (!content) {
       setPopupText("Deskripsi Wajib Diisi");
@@ -39,18 +35,18 @@ const TambahBlog = ({ isAdmin }) => {
       return;
     }
     const token = localStorage.getItem("token");
-    const res = await createBlog(
+    const res = await createVideo(
       token,
       title,
       titleSm,
       subtitleSm,
       content,
-      cover,
+      video,
       inputDate
     );
     if (res) {
       console.log("Blog added:", res);
-      setPopupText("Blog Berhasil Ditambah");
+      setPopupText("Video Berhasil Ditambah");
       setPopupType("success");
       setShowPopup(true);
       setTimeout(() => {
@@ -58,7 +54,7 @@ const TambahBlog = ({ isAdmin }) => {
       }, 1500);
     } else {
       console.log("Failed to add ios");
-      setPopupText("Blog Gagal Ditambahkan");
+      setPopupText("Video Gagal Ditambahkan");
       setPopupType("error");
       setShowPopup(true);
     }
@@ -70,7 +66,7 @@ const TambahBlog = ({ isAdmin }) => {
       <div className="mt-2 bg-white p-4 shadow-sm rounded-md max-w-7xl mx-auto">
         <div className="flex mb-4 items-center">
           <div className="text-primary hover:opacity-90">
-            <Link href="/manage-blog">
+            <Link href="/video">
               <Icon
                 icon="iconamoon:arrow-left-5-circle-fill"
                 className="h-9 w-9 flex items-center justify-center text-center"
@@ -78,16 +74,16 @@ const TambahBlog = ({ isAdmin }) => {
             </Link>
           </div>
           <h2 className="text-black ml-2 text-2xl font-semibold">
-            {isAdmin ? "Tambah Blog" : "Tambah Blog"}
+            {isAdmin ? "Tambah Video" : "Tambah Video"}
           </h2>
         </div>
         <div className="mt-1"></div>
-        <div className="bg-primary h-[2px] mb-4"></div>
+      <div className="bg-primary h-[2px] mb-4"></div>
         <div className="flex flex-col text-base items-start justify-start">
           <form
             className="flex flex-col w-full"
             encType="multipart/form-data"
-            onSubmit={handleAddBlog}
+            onSubmit={handleAddVideo}
           >
             <div className="mb-6 flex flex-col">
               <label className="mb-2 text-sm font-medium text-black">
@@ -150,15 +146,14 @@ const TambahBlog = ({ isAdmin }) => {
             </div>
             <div className="mb-6 flex flex-col">
               <label className="mb-2 text-sm font-medium text-black">
-                Cover : <span className="text-red-500">*</span>
+                Link Video (Format MP4) :{" "}
+                <span className="text-red-500">*</span>
               </label>
               <input
-                type="file"
-                id="foto"
-                name="foto"
-                accept="image/*"
+                type="text"
                 className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
-                onChange={handleFileChangeFoto}
+                placeholder="Subjudul"
+                onChange={(e) => setVideo(e.target.value)}
                 required
               />
             </div>
@@ -178,4 +173,4 @@ const TambahBlog = ({ isAdmin }) => {
   );
 };
 
-export default TambahBlog;
+export default TambahVideo;
