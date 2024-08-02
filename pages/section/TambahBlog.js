@@ -67,12 +67,9 @@ const TambahBlog = ({ isAdmin }) => {
   return (
     <main>
       <PopUp text={popupText} isOpen={showPopup} type={popupType} />
-      <div className="mt-2 bg-white p-4 shadow-sm rounded-md max-w-md mx-auto">
-        <div className="flex justify-between items-center mb-4 sm:flex-col sm:items-start">
-          <h2 className="text-black text-lg font-semibold pb-1 sm:text-base">
-            {isAdmin ? "Tambah Blog" : "Tambah Blog"}
-          </h2>
-          <div>
+      <div className="mt-2 bg-white p-4 shadow-sm rounded-md max-w-7xl mx-auto">
+        <div className="flex mb-4 items-center">
+          <div className="text-primary hover:opacity-90">
             <Link href="/manage-blog">
               <Icon
                 icon="iconamoon:arrow-left-5-circle-fill"
@@ -80,9 +77,12 @@ const TambahBlog = ({ isAdmin }) => {
               />
             </Link>
           </div>
+          <h2 className="text-black ml-2 text-2xl font-semibold">
+            {isAdmin ? "Tambah Blog" : "Tambah Blog"}
+          </h2>
         </div>
         <div className="mt-1"></div>
-        <div className="bg-blue-500 h-px mb-4"></div>
+        <div className="bg-primary h-[2px] mb-4"></div>
         <div className="flex flex-col text-base items-start justify-start">
           <form
             className="flex flex-col w-full"
@@ -95,7 +95,7 @@ const TambahBlog = ({ isAdmin }) => {
               </label>
               <input
                 type="text"
-                className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-blue-500"
+                className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
                 placeholder="Judul "
                 onChange={(e) => setTitle(e.target.value)}
                 required
@@ -107,7 +107,7 @@ const TambahBlog = ({ isAdmin }) => {
               </label>
               <input
                 type="text"
-                className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-blue-500"
+                className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
                 placeholder="Judul Halaman"
                 onChange={(e) => setTitleSm(e.target.value)}
                 required
@@ -119,7 +119,7 @@ const TambahBlog = ({ isAdmin }) => {
               </label>
               <input
                 type="text"
-                className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-blue-500"
+                className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
                 placeholder="Subjudul"
                 onChange={(e) => setSubtitleSm(e.target.value)}
                 required
@@ -133,7 +133,7 @@ const TambahBlog = ({ isAdmin }) => {
                 value={content}
                 onChange={setDescription}
                 theme="snow"
-                className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-blue-500"
+                className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
               />
             </div>
             <div className="mb-6 flex flex-col">
@@ -142,7 +142,7 @@ const TambahBlog = ({ isAdmin }) => {
               </label>
               <input
                 type="date"
-                className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-blue-500"
+                className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
                 placeholder="Tanggal Rilis"
                 onChange={(e) => setInputDate(e.target.value)}
                 required
@@ -157,14 +157,14 @@ const TambahBlog = ({ isAdmin }) => {
                 id="foto"
                 name="foto"
                 accept="image/*"
-                className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-blue-500"
+                className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
                 onChange={handleFileChangeFoto}
                 required
               />
             </div>
             <div>
               <button
-                className="w-full mt-6 mb-3 rounded-md py-3 text-lg text-white font-semibold text-center bg-gradient-to-r from-blue-500 to-light-blue-500 disabled:bg-gray-400"
+                className="w-full mt-6 mb-3 rounded-md py-3 text-lg text-white font-semibold text-center bg-primary hover:opacity-90"
                 type="submit"
                 disabled={loading}
               >
