@@ -71,17 +71,21 @@ const ManageMap = ({ id, isAdmin }) => {
   return (
     <main>
       <PopUp text={popupText} isOpen={showPopup} type={popupType} />
-      <div className="container-manage">
-        <div className="header-manage">
-          <h2>
+      <div className="container mx-auto">
+        <div className="flex items-center justify-between">
+          <h2 className="text-2xl font-semibold">
             {isAdmin ? `Manage Map - ${catloc}` : `Manage Map - ${catloc}`}
           </h2>
-          <div className="dashboard-button-area">
+          <div className="flex space-x-4">
             <Link href={`/tambahMap/${id}`}>
-              <button className="add-button">Tambah Map</button>
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Tambah Map
+              </button>
             </Link>
             <Link href={"/kategori-map"}>
-              <button className="add-button lastButton">Back</button>
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Back
+              </button>
             </Link>
           </div>
         </div>

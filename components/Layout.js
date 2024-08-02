@@ -18,7 +18,9 @@ const Layout = ({ children }) => {
       "/tambahKategoriMap",
       "/tambah-blog",
       "/manage-user",
-    ].includes(router.pathname) || router.pathname.startsWith("/manage-map/");
+    ].includes(router.pathname) ||
+    router.pathname.startsWith("/manage-map/") ||
+    router.pathname.startsWith("/tambahMap/");
 
   return (
     <>

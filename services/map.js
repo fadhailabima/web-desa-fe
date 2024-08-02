@@ -116,3 +116,33 @@ export const deleteMap = async (token, id) => {
     return null;
   }
 };
+
+export const addMap = async (
+  token,
+  catlocs_id,
+  nama_lokasi,
+  latitude,
+  longitude
+) => {
+  try {
+    const res = await axios.post(
+      `https://apiku.desawisatapunjulharjo.com/api/locations/${catlocs_id}`,
+      { nama_lokasi, latitude, longitude },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    if (res.data) {
+      // console.log('Soal added:', res.data);
+      return res.data; // return the response data
+    } else {
+      // console.log('No response from server');
+      return null;
+    }
+  } catch (error) {
+    console.error("An error occurred while adding the kabinet:", error);
+    return null;
+  }
+};
