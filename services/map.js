@@ -69,3 +69,50 @@ export const addKategoriMap = async (token, kategori_lokasi) => {
     return null;
   }
 };
+
+export const getMap = async (token, catlocs_id) => {
+  try {
+    const res = await axios.get(
+      `https://apiku.desawisatapunjulharjo.com/api/locations/${catlocs_id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    // console.log(res);
+    if (res.data) {
+      // console.log('Data found:', res.data.data);
+      return res.data.data; // return the whole data object
+    } else {
+      // console.log('No data found');
+      return null;
+    }
+  } catch (error) {
+    console.error("An error occurred while fetching the data:", error);
+    throw error; // re-throw the error
+  }
+};
+
+export const deleteMap = async (token, id) => {
+  try {
+    const res = await axios.delete(
+      `https://apiku.desawisatapunjulharjo.com/api/locations/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    if (res.data) {
+      // console.log('Kabinet deleted:', res.data);
+      return res.data; // return the response data
+    } else {
+      // console.log('No response from server');
+      return null;
+    }
+  } catch (error) {
+    console.error("An error occurred while deleting the kabinet:", error);
+    return null;
+  }
+};

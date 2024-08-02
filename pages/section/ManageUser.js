@@ -93,10 +93,13 @@ const ManageUser = ({ isAdmin }) => {
                           No
                         </th>
                         <th className="text-center py-3 text-xs font-medium tracking-wider text-black uppercase">
+                          Nama
+                        </th>
+                        <th className="text-center py-3 text-xs font-medium tracking-wider text-black uppercase">
                           Username
                         </th>
                         <th className="text-center py-3 text-xs font-medium tracking-wider text-black uppercase">
-                          Action 1
+                          Action
                         </th>
                       </tr>
                     </thead>
@@ -111,8 +114,11 @@ const ManageUser = ({ isAdmin }) => {
                               <span className="break-word">{i + 1}</span>
                             </td>
                             <td className="text-center py-4 text-sm text-black">
+                              <span className="break-word">{item.nama}</span>
+                            </td>
+                            <td className="text-center py-4 text-sm text-black">
                               <span className="break-word">
-                                {item.nama}
+                                {item.username}
                               </span>
                             </td>
                             <td className="text-center py-4 text-sm text-black">

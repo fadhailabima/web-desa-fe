@@ -62,7 +62,7 @@ export const logout = async (token) => {
 export const getUser = async (token) => {
   try {
     const res = await axios.get(
-      "https://apiku.desawisatapunjulharjo.com/api/user",
+      "https://apiku.desawisatapunjulharjo.com/api/users",
       {
         headers: {
           Authorization: `Bearer ${token}`,
