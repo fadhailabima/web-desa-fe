@@ -1,9 +1,13 @@
+"use client"
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { getMap, deleteMap } from "@/services/map";
 import DeletePopup from "@/components/DeletePopup";
 import PopUp from "@/components/Popup";
+import dynamic from "next/dynamic";
+
+const Maps = dynamic(() => import("@/components/maps"), { ssr: false });
 
 const ManageMap = ({ id, isAdmin }) => {
   const [lokasi, setLokasi] = useState([]);
@@ -89,6 +93,9 @@ const ManageMap = ({ id, isAdmin }) => {
             </Link>
           </div>
         </div>
+      </div>
+      <div className="container m-5 mx-auto w-3/4">
+        <Maps data={lokasi} />
       </div>
     </main>
   );
