@@ -119,7 +119,7 @@ const ManageWisata = ({ isAdmin }) => {
                               </span>
                             </td>
                             <td className="text-center py-4 text-sm text-black">
-                              <Link href={`/updateIos/${item.id}`}>
+                              <Link href={`/manage-fasilitas/${item.id}`}>
                                 <button className="link-button">
                                   Lihat Detail
                                 </button>

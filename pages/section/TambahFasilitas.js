@@ -3,8 +3,8 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { useRouter } from "next/router";
+import { createWisata } from "@/services/wisata";
 import PopUp from "@/components/Popup";
-import { createBlog } from "@/services/blog";
 import "quill/dist/quill.snow.css";
 
 const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
@@ -12,7 +12,7 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   loading: () => <p>Loading ...</p>,
 });
 
-const TambahBlog = ({ isAdmin }) => {
+const TambahWisata = ({ id, isAdmin }) => {
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState("");
   const [titleSm, setTitleSm] = useState("");
@@ -30,7 +30,7 @@ const TambahBlog = ({ isAdmin }) => {
     setImage(e.target.files[0]);
   };
 
-  const handleAddBlog = async (e) => {
+  const handleAddWisata = async (e) => {
     e.preventDefault();
     if (!content) {
       setPopupText("Deskripsi Wajib Diisi");
@@ -39,8 +39,9 @@ const TambahBlog = ({ isAdmin }) => {
       return;
     }
     const token = localStorage.getItem("token");
-    const res = await createBlog(
+    const res = await createWisata(
       token,
+      id,
       title,
       titleSm,
       subtitleSm,
@@ -49,16 +50,16 @@ const TambahBlog = ({ isAdmin }) => {
       inputDate
     );
     if (res) {
-      console.log("Blog added:", res);
-      setPopupText("Blog Berhasil Ditambah");
+      console.log("Soal added:", res);
+      setPopupText("Fasilitas Berhasil Ditambah");
       setPopupType("success");
       setShowPopup(true);
       setTimeout(() => {
-        router.push("/manage-blog");
+        router.push(`/manage-fasilitas/${id}`);
       }, 1500);
     } else {
-      console.log("Failed to add ios");
-      setPopupText("Blog Gagal Ditambahkan");
+      console.log("Failed to add kabinet");
+      setPopupText("Fasilitas Gagal Ditamnbah");
       setPopupType("error");
       setShowPopup(true);
     }
@@ -70,7 +71,7 @@ const TambahBlog = ({ isAdmin }) => {
       <div className="mt-2 bg-white p-4 shadow-sm rounded-md max-w-7xl mx-auto">
         <div className="flex mb-4 items-center">
           <div className="text-primary hover:opacity-90">
-            <Link href="/manage-blog">
+            <Link href={`/manage-fasilitas/${id}`}>
               <Icon
                 icon="iconamoon:arrow-left-5-circle-fill"
                 className="h-9 w-9 flex items-center justify-center text-center"
@@ -78,7 +79,7 @@ const TambahBlog = ({ isAdmin }) => {
             </Link>
           </div>
           <h2 className="text-black ml-2 text-2xl font-semibold">
-            {isAdmin ? "Tambah Blog" : "Tambah Blog"}
+            {isAdmin ? "Tambah Fasilitas" : "Tambah Fasilitas"}
           </h2>
         </div>
         <div className="mt-1"></div>
@@ -87,11 +88,11 @@ const TambahBlog = ({ isAdmin }) => {
           <form
             className="flex flex-col w-full"
             encType="multipart/form-data"
-            onSubmit={handleAddBlog}
+            onSubmit={handleAddWisata}
           >
             <div className="mb-6 flex flex-col">
               <label className="mb-2 text-sm font-medium text-black">
-                Judul : <span className="text-red-500">*</span>
+                Nama Fasilitas : <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
@@ -150,7 +151,7 @@ const TambahBlog = ({ isAdmin }) => {
             </div>
             <div className="mb-6 flex flex-col">
               <label className="mb-2 text-sm font-medium text-black">
-                Cover : <span className="text-red-500">*</span>
+                Image : <span className="text-red-500">*</span>
               </label>
               <input
                 type="file"
@@ -178,4 +179,4 @@ const TambahBlog = ({ isAdmin }) => {
   );
 };
 
-export default TambahBlog;
+export default TambahWisata;

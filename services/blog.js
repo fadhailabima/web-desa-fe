@@ -52,7 +52,7 @@ export const createBlog = async (
   titleSm,
   subtitleSm,
   content,
-  cover,
+  image,
   inputDate
 ) => {
   const formData = new FormData();
@@ -60,7 +60,7 @@ export const createBlog = async (
   formData.append("titleSm", titleSm);
   formData.append("subtitleSm", subtitleSm);
   formData.append("content", content);
-  formData.append("cover", cover);
+  formData.append("image", image);
   formData.append("inputDate", inputDate);
   try {
     const res = await axios.post("https://apiku.desawisatapunjulharjo.com/api/news", formData, {

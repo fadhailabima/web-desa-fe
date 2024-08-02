@@ -1,59 +1,60 @@
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import PopUp from "@/components/Popup";
-import DeletePopup from "@/components/DeletePopup";
 import { useRouter } from "next/router";
-import { getVideo, deleteVideo } from "@/services/video";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { getWisata, deleteWisata } from "@/services/wisata";
+import DeletePopup from "@/components/DeletePopup";
+import PopUp from "@/components/Popup";
 
-const Video = ({ isAdmin }) => {
-  const [video, setVideo] = useState([]);
+const ManageFasilitas = ({ id, isAdmin }) => {
+  const [wisata, setWisata] = useState([]);
+  const [namaKategori, setNamaKategori] = useState("");
+  const router = useRouter();
   const [deletePopupVisible, setDeletePopupVisible] = useState(false);
   const [userToDelete, setUserToDelete] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const [popupText, setPopupText] = useState("");
   const [popupType, setPopupType] = useState("");
-  const router = useRouter();
-
-  const getVideoData = async (token) => {
-    const res = await getVideo(token);
-    if (res) {
-      setVideo(res);
-    } else {
-      console.log("Failed to get users");
-    }
-  };
+  const token =
+    typeof window !== "undefined" ? localStorage.getItem("token") : null;
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      getVideoData(token);
-    } else {
-      router.push("/login");
+    if (id && token) {
+      const fetchStaff = async () => {
+        try {
+          const data = await getWisata(token, id);
+          console.log(data, "Data");
+          setWisata(data.facilities);
+          setNamaKategori(data.kategori);
+        } catch (err) {
+          console.error(err);
+        }
+      };
+
+      fetchStaff();
     }
-  }, [router]);
+  }, [id, token]);
 
   const showDeletePopup = (id) => {
     setUserToDelete(id);
     setDeletePopupVisible(true);
   };
 
-  const deleteVideoHandler = async () => {
-    const token = localStorage.getItem("token");
+  const handleDeleteWisata = async () => {
     if (token) {
       try {
-        const res = await deleteBlog(token, userToDelete);
-        console.log("IOS deleted successfully");
-        setDeletePopupVisible(false);
-        setUserToDelete(null);
-        setPopupText("Blog Berhasil Dihapus");
+        const res = await deleteWisata(token, userToDelete);
+        console.log("Staff deleted successfully");
+        setPopupText("Fasilitas Berhasil Dihapus");
         setPopupType("success");
         setShowPopup(true);
+        setDeletePopupVisible(false);
+        setUserToDelete(null);
         setTimeout(() => {
           window.location.reload();
         }, 1000);
       } catch (error) {
-        console.log("Failed to delete IOS");
-        setPopupText("Blog Gagal Dihapus");
+        console.log("Failed to delete wisata");
+        setPopupText("Fasilitas Gagal Dihapus");
         setPopupType("error");
         setShowPopup(true);
       }
@@ -71,8 +72,8 @@ const Video = ({ isAdmin }) => {
 
   const searchTermLower = searchTerm?.toLowerCase() || "";
 
-  const filteredItems = video?.filter((item) =>
-    item.title?.toLowerCase().includes(searchTermLower)
+  const filteredItems = wisata?.filter((item) =>
+    item.nama?.toLowerCase().includes(searchTermLower)
   );
   const totalPages = Math.ceil((filteredItems?.length ?? 0) / itemsPerPage);
   const currentItems = filteredItems?.slice(
@@ -80,19 +81,15 @@ const Video = ({ isAdmin }) => {
     currentPage * itemsPerPage
   );
 
-  const handleViewDescription = (content) => {
-    const newWindow = window.open();
-    newWindow.document.write(content);
-    newWindow.document.close();
-  };
-
   return (
     <main>
       <PopUp text={popupText} isOpen={showPopup} type={popupType} />
       <div className="flex-1 max-h-full p-5">
         <div className="flex flex-col justify-between items-center space-y-6 md:flex-row md:space-y-0">
           <h2 className="text-gray-500 mt-6 text-xl text-center font-semibold pb-1">
-            {isAdmin ? "Manage Video" : "Manage Video"}
+            {isAdmin
+              ? `Manage Fasilitas - ${namaKategori}`
+              : `Manage Fasilitas - ${namaKategori}`}
           </h2>
           <input
             type="text"
@@ -100,15 +97,20 @@ const Video = ({ isAdmin }) => {
             placeholder="Search..."
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <div className="dashboard-button-area">
-            <Link href="/tambahVideo">
-              <button className="mt-6 border-white border px-2.5 py-1 rounded-md bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white hover:bg-gray-100 hover:text-black ml-2.5">
-                Tambah Video
+          <div className="flex space-x-4">
+            <Link href={`/tambahFasilitas/${id}`}>
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Tambah Fasilitas
+              </button>
+            </Link>
+            <Link href={"/manage-wisata"}>
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Back
               </button>
             </Link>
           </div>
         </div>
-        <div className="p-5">
+        <div className="">
           <div className="content-manage flex flex-col mt-6">
             <div className="table-container -mx-6 -my-2 overflow-x-auto">
               <div className="table-wrapper inline-block min-w-full px-6 py-2 align-middle">
@@ -129,10 +131,10 @@ const Video = ({ isAdmin }) => {
                           Subtitle
                         </th>
                         <th className="text-center py-3 text-xs font-medium tracking-wider text-black uppercase">
-                          Description
+                          Content
                         </th>
                         <th className="text-center py-3 text-xs font-medium tracking-wider text-black uppercase">
-                          Link Video
+                          Cover
                         </th>
                         <th className="text-center py-3 text-xs font-medium tracking-wider text-black uppercase">
                           Created Date
@@ -177,13 +179,17 @@ const Video = ({ isAdmin }) => {
                               </button>
                             </td>
                             <td className="text-center py-4 text-sm text-black">
-                              <span className="break-word">{item.video}</span>
+                              <img
+                                src={item.image_url}
+                                alt="Cover"
+                                className="w-12 h-12"
+                              />
                             </td>
                             <td className="text-center py-4 text-sm text-black">
                               {item.inputDate}
                             </td>
                             <td className="text-center py-4 text-sm text-black">
-                              <Link href={`/updateVideo/${item.id}`}>
+                              <Link href={`/updateFasilitas/${item.id}`}>
                                 <button className="link-button">Update</button>
                               </Link>
                             </td>
@@ -199,7 +205,7 @@ const Video = ({ isAdmin }) => {
                         ))}
                       {deletePopupVisible && (
                         <DeletePopup
-                          onConfirm={deleteVideoHandler}
+                          onConfirm={deleteWisata}
                           onCancel={handleCancelDelete}
                         />
                       )}
@@ -235,4 +241,4 @@ const Video = ({ isAdmin }) => {
   );
 };
 
-export default Video;
+export default ManageFasilitas;
