@@ -18,6 +18,7 @@ const Layout = ({ children }) => {
       "/tambahKategoriMap",
       "/tambah-blog",
       "/manage-user",
+      "/tambahVideo"
     ].includes(router.pathname) ||
     router.pathname.startsWith("/manage-map/") ||
     router.pathname.startsWith("/tambahMap/");

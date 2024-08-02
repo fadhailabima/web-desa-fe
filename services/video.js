@@ -45,3 +45,44 @@ export const deleteVideo = async (token, id) => {
     return null;
   }
 };
+
+export const createVideo = async (
+  token,
+  title,
+  titleSm,
+  subtitleSm,
+  video,
+  cover,
+  inputDate
+) => {
+  const data = {
+    title,
+    titleSm,
+    subtitleSm,
+    video,
+    cover,
+    inputDate,
+  };
+  try {
+    const res = await axios.post(
+      "https://apiku.desawisatapunjulharjo.com/api/videos",
+      data,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    if (res.data) {
+      // console.log("Ios added:", res.data);
+      return res.data;
+    } else {
+      // console.log("No response from server");
+      return null;
+    }
+  } catch (error) {
+    console.error("An error occurred while adding the Ios:", error);
+    return null;
+  }
+};
