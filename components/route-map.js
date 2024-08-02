@@ -4,7 +4,7 @@ import { MapContainer, TileLayer } from "react-leaflet";
 import { createControlComponent } from "@react-leaflet/core";
 import "leaflet-routing-machine";
 
-const createRoutineMachineLayer = ({ position }) => {
+const createRoutineMachineLayer = ({ position, data }) => {
     const instance = L.Routing.control({
         waypoints: [
             L.latLng(position.lat, position.lng),
@@ -26,7 +26,7 @@ const createRoutineMachineLayer = ({ position }) => {
 
 const RoutingMachine = createControlComponent(createRoutineMachineLayer);
 
-export default function MapWithRouting() {
+export default function MapWithRouting({ data }) {
     const [position, setPosition] = useState({ lat: 0, lng: 0 });
     const [isLoaded, setIsLoaded] = useState(false);
 
@@ -44,7 +44,7 @@ export default function MapWithRouting() {
             style={{ height: "80vh", width: "100%" }}
         >
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-            <RoutingMachine position={position} />
+            <RoutingMachine position={position} data={data} />
         </MapContainer>
     ) : (
         <div>Loading...</div>

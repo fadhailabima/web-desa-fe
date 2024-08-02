@@ -3,6 +3,7 @@ import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
 import 'leaflet-defaulticon-compatibility';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function Maps({ data }) {
     const [center, setCenter] = useState([0, 0]);
@@ -31,7 +32,7 @@ export default function Maps({ data }) {
                             <Popup>
                                 <div>
                                     <h2>{item.nama_lokasi}</h2>
-                                    <Link href={`/route-map/${id}`}>
+                                    <Link href={`/route-map/${item.id}`}>
                                         <button className="link-button">Rute</button>
                                     </Link>
                                 </div>

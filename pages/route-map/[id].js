@@ -6,16 +6,16 @@ import dynamic from "next/dynamic";
 
 const RouteMap = dynamic(() => import("@/pages/section/RouteMap"), { ssr: false });
 
-// export async function getServerSideProps(context) {
-//     // const { id } = context.params;
+export async function getServerSideProps(context) {
+    const { id } = context.params;
 
-//     return {
-//         props: {
-//         // id,
-//         isAdmin: true,
-//         },
-//     };
-// }
+    return {
+        props: {
+          id,
+          isAdmin: true,
+        },
+    };
+}
 
 const routeMap = (props) => {
   return (
