@@ -23,7 +23,8 @@ const Layout = ({ children }) => {
     router.pathname.startsWith("/manage-map/") ||
     router.pathname.startsWith("/tambahMap/") ||
     router.pathname.startsWith("/manage-fasilitas/") ||
-    router.pathname.startsWith("/tambahFasilitas/");
+    router.pathname.startsWith("/tambahFasilitas/") ||
+    router.pathname.startsWith("/route-map/");
 
   return (
     <>

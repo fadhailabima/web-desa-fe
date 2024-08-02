@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -95,8 +95,14 @@ const ManageMap = ({ id, isAdmin }) => {
         </div>
       </div>
       <div className="container m-5 mx-auto w-3/4">
-        <Maps data={lokasi} />
+        <Maps data={lokasi} onDelete={showDeletePopup} />
       </div>
+      {deletePopupVisible && (
+        <DeletePopup
+          onConfirm={handleDeleteMap}
+          onCancel={handleCancelDelete}
+        />
+      )}
     </main>
   );
 };
