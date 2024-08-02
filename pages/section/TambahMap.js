@@ -1,44 +1,29 @@
+"use client"
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { addMap } from "@/services/map";
 import DeletePopup from "@/components/DeletePopup";
 import PopUp from "@/components/Popup";
+import dynamic from "next/dynamic";
+
+const MapTambah = dynamic(() => import("@/components/tambah-map"), { ssr: false });
 
 const TambahMap = ({ id, isAdmin }) => {
-  const [loading, setLoading] = useState(false);
-  const [nama_lokasi, setLokasi] = useState("");
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
-  const [error, setError] = useState(false);
-  const router = useRouter();
   const [showPopup, setShowPopup] = useState(false);
   const [popupText, setPopupText] = useState("");
   const [popupType, setPopupType] = useState("");
 
-  const handleAddMap = async (e) => {
-    e.preventDefault();
-    const token = localStorage.getItem("token");
-    const res = await addMap(token, id, nama_lokasi, latitude, longitude);
-    if (res) {
-      console.log("Soal added:", res);
-      setPopupText("Lokasi Berhasil Ditambah");
-      setPopupType("success");
-      setShowPopup(true);
-      setTimeout(() => {
-        router.push(`/manage-map/${id}`);
-      }, 1500);
-    } else {
-      console.log("Failed to add kabinet");
-      setPopupText("Lokasi Gagal Ditamnbah");
-      setPopupType("error");
-      setShowPopup(true);
-    }
-  };
-
   return (
-    <main>
+    <main className="h-full">
       <PopUp text={popupText} isOpen={showPopup} type={popupType} />
+      <div className="container mx-auto">
+        <div className="flex items-center flex-row justify-between m-5">
+          <div className="container">
+            <MapTambah />
+          </div>
+        </div>
+      </div>
     </main>
   );
 };
