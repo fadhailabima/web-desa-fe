@@ -16,12 +16,15 @@ const ExploreWisata = () => {
           <h1 className="text-center  text-primary text-5xl sm:text-7xl font-salsa">
             Kategori Wisata
           </h1>
-          <div className="flex mt-12 justify-center">
+          <div className="flex flex-wrap mt-12 justify-center gap-5 ">
             {kategoriWisata.map((data) => (
-              <div key={data.id} className="border-2 shadow-lg p-5 rounded-lg">
-                <h1>
-                  <Link href={`explorwisata/${data.title}`}>{data.title}</Link>
-                </h1>
+              <div
+                key={data.id}
+                className="border-2 shadow-lg p-5 rounded-lg cursor-pointer hover:text-primary"
+              >
+                <Link href={`explore-wisata/${data.title.toLowerCase().replace(/ /g, "-")}`}>
+                  <h1 className="text-xl">{data.title}</h1>
+                </Link>
               </div>
             ))}
           </div>

@@ -35,8 +35,7 @@ const VideoPost = ({ video }) => {
   }
 
   return (
-    <Layout>
-      <section className="font-poppins">
+    <section className="font-poppins">
         <div className="pt-[130px] px-5"></div>
         <TopBlur />
         <CustomContainer>
@@ -60,7 +59,6 @@ const VideoPost = ({ video }) => {
           </div>
         </CustomContainer>
       </section>
-    </Layout>
   );
 };
 
