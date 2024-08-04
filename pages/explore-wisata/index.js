@@ -3,36 +3,31 @@ import Layout from "@/components/Layout";
 import CustomContainer from "@/components/customContainer";
 import NavbarPadder from "@/components/navbarPadder";
 import TopBlur from "@/components/topBlur";
-import { wisata } from "../data";
+import { kategoriWisata } from "../data";
+import Link from "next/link";
 
 const ExploreWisata = () => {
   return (
     <section>
-        <NavbarPadder />
-        <TopBlur />
-        <CustomContainer>
-          <div className="px-5">
-            {wisata.map((data) => (
-              <div
-                key={data.id}
-                className="flex flex-col lg:flex-row border-2 my-12 p-8 rounded-lg shadow-xl"
-              >
-                <div className="lg:max-w-[50%]">
-                  <h1 className="text-3xl font-medium my-3">{data.title}</h1>
-                  <p className="text-base leading-[160%]">{data.description}</p>
-                </div>
-                <div className="w-full lg:ml-3 my-8 lg:my-0">
-                  <img
-                    className="w-full rounded-lg"
-                    src={data.image}
-                    alt="wisata image"
-                  />
-                </div>
+      <NavbarPadder />
+      <TopBlur />
+      <CustomContainer>
+        <div className="px-5 py-[10vh]">
+          <h1 className="text-center  text-primary text-5xl sm:text-7xl font-salsa">
+            Kategori Wisata
+          </h1>
+          <div className="flex mt-12 justify-center">
+            {kategoriWisata.map((data) => (
+              <div key={data.id} className="border-2 shadow-lg p-5 rounded-lg">
+                <h1>
+                  <Link href={`explorwisata/${data.title}`}>{data.title}</Link>
+                </h1>
               </div>
             ))}
           </div>
-        </CustomContainer>
-      </section>
+        </div>
+      </CustomContainer>
+    </section>
   );
 };
 

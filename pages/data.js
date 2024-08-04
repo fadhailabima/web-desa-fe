@@ -158,3 +158,18 @@ export const wisata = [
     image: "/pantai.jpeg",
   }
 ]
+
+export const kategoriWisata = [
+  {
+    id: 0,
+    title: "Staycation 😏"
+  },
+  {
+    id: 1,
+    title: "Beach"
+  },
+  {
+    id: 2,
+    title: "Ocean"
+  },
+]
