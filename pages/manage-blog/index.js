@@ -14,12 +14,12 @@ export async function getServerSideProps(context) {
 
 const ManageBlogPage = (props) => {
   return (
-    <LayoutAdmin>
+    <>
       <Head>
         <title>Manage Blog</title>
       </Head>
       <ManageBlog {...props} />
-    </LayoutAdmin>
+    </>
   );
 };
 

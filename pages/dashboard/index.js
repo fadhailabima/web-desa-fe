@@ -14,12 +14,12 @@ export async function getServerSideProps(context) {
 
 const DashboardPage = (props) => {
   return (
-    <LayoutAdmin>
+    <>
       <Head>
         <title>Dashboard</title>
       </Head>
       <Dashboard {...props} />
-    </LayoutAdmin>
+    </>
   );
 };
 

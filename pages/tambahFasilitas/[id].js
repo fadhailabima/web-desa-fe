@@ -17,12 +17,10 @@ export async function getServerSideProps(context) {
 const tambahFasilitas = (props) => {
   return (
     <>
-      <LayoutAdmin>
-        <Head>
-          <title>Tambah Fasilitas</title>
-        </Head>
-        <TambahWisata {...props} />
-      </LayoutAdmin>
+      <Head>
+        <title>Tambah Fasilitas</title>
+      </Head>
+      <TambahWisata {...props} />
     </>
   );
 };

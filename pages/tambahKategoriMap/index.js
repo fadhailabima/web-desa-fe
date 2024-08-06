@@ -14,12 +14,12 @@ export async function getServerSideProps(context) {
 
 const TambahKategoriMapPage = (props) => {
   return (
-    <LayoutAdmin>
+    <>
       <Head>
         <title>Tambah Kategori Map</title>
       </Head>
       <TambahKategoriMap {...props} />
-    </LayoutAdmin>
+    </>
   );
 };
 

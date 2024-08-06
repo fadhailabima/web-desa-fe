@@ -14,12 +14,12 @@ export async function getServerSideProps(context) {
 
 const TambahVideoPage = (props) => {
   return (
-    <LayoutAdmin>
+    <>
       <Head>
         <title>Tambah Video</title>
       </Head>
       <TambahVideo {...props} />
-    </LayoutAdmin>
+    </>
   );
 };
 

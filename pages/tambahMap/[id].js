@@ -17,12 +17,10 @@ export async function getServerSideProps(context) {
 const tambahMap = (props) => {
   return (
     <>
-      <LayoutAdmin>
-        <Head>
-          <title>Tambah Map</title>
-        </Head>
-        <TambahMap {...props} />
-      </LayoutAdmin>
+      <Head>
+        <title>Tambah Map</title>
+      </Head>
+      <TambahMap {...props} />
     </>
   );
 };

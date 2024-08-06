@@ -14,12 +14,12 @@ export async function getServerSideProps(context) {
 
 const TambahBlogPage = (props) => {
   return (
-    <LayoutAdmin>
+    <>
       <Head>
         <title>Tambah Blog</title>
       </Head>
       <TambahBlog {...props} />
-    </LayoutAdmin>
+    </>
   );
 };
 
