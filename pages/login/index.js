@@ -126,7 +126,11 @@ const LoginPage = () => {
       >
         <div className="flex justify-between mb-4">
           <h1 className="text-xl font-bold">Login</h1>
-          <img src="/kkn-logo.png" alt="hmif logo" className="w-24" />
+          <img
+            src="https://pub-42bc368a5a10428f9e8d9eca4d5331e4.r2.dev/logo%20kkn%20punjulharjo%201%20foto.png"
+            alt="hmif logo"
+            className="w-24"
+          />
         </div>
         <div className="mb-4">
           <h1 className="text-base font-semibold bg-gray-100 p-8 rounded-xl">

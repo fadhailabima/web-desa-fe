@@ -50,7 +50,7 @@ const KategoriMap = ({ isAdmin }) => {
         setUserToDelete(null);
         setTimeout(() => {
           window.location.reload();
-        }, 1000);
+        }, 10000);
       } catch (error) {
         console.log("Failed to delete kabinet");
         setPopupText("Kategori Gagal Dihapus");

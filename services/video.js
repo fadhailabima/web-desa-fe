@@ -51,16 +51,16 @@ export const createVideo = async (
   title,
   titleSm,
   subtitleSm,
+  content,
   video,
-  cover,
   inputDate
 ) => {
   const data = {
     title,
     titleSm,
     subtitleSm,
+    content,
     video,
-    cover,
     inputDate,
   };
   try {

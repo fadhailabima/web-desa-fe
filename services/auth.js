@@ -105,11 +105,12 @@ export const deleteUser = async (token, id) => {
   }
 };
 
-export const addUser = async (token, username, password) => {
+export const addUser = async (token, nama, username, password) => {
   try {
     const res = await axios.post(
       `https://apiku.desawisatapunjulharjo.com/api/user`,
       {
+        nama: nama,
         username: username,
         password: password,
       },

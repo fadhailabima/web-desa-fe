@@ -18,7 +18,6 @@ const TambahWisata = ({ id, isAdmin }) => {
   const [titleSm, setTitleSm] = useState("");
   const [subtitleSm, setSubtitleSm] = useState("");
   const [content, setDescription] = useState("");
-  const [inputDate, setInputDate] = useState("");
   const [image, setImage] = useState("");
   const [error, setError] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
@@ -46,8 +45,7 @@ const TambahWisata = ({ id, isAdmin }) => {
       titleSm,
       subtitleSm,
       content,
-      image,
-      inputDate
+      image
     );
     if (res) {
       console.log("Soal added:", res);
@@ -59,7 +57,7 @@ const TambahWisata = ({ id, isAdmin }) => {
       }, 1500);
     } else {
       console.log("Failed to add kabinet");
-      setPopupText("Fasilitas Gagal Ditamnbah");
+      setPopupText("Fasilitas Gagal Ditambah");
       setPopupType("error");
       setShowPopup(true);
     }
@@ -88,7 +86,7 @@ const TambahWisata = ({ id, isAdmin }) => {
           <form
             className="flex flex-col w-full"
             encType="multipart/form-data"
-            onSubmit={handleAddWisata}
+            onSubmit={(e) => handleAddWisata(e)}
           >
             <div className="mb-6 flex flex-col">
               <label className="mb-2 text-sm font-medium text-black">
@@ -97,7 +95,7 @@ const TambahWisata = ({ id, isAdmin }) => {
               <input
                 type="text"
                 className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
-                placeholder="Judul "
+                placeholder="Nama Fasilitas"
                 onChange={(e) => setTitle(e.target.value)}
                 required
               />
@@ -135,18 +133,6 @@ const TambahWisata = ({ id, isAdmin }) => {
                 onChange={setDescription}
                 theme="snow"
                 className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
-              />
-            </div>
-            <div className="mb-6 flex flex-col">
-              <label className="mb-2 text-sm font-medium text-black">
-                Tanggal Rilis : <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="date"
-                className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
-                placeholder="Tanggal Rilis"
-                onChange={(e) => setInputDate(e.target.value)}
-                required
               />
             </div>
             <div className="mb-6 flex flex-col">

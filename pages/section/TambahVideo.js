@@ -78,7 +78,7 @@ const TambahVideo = ({ isAdmin }) => {
           </h2>
         </div>
         <div className="mt-1"></div>
-      <div className="bg-primary h-[2px] mb-4"></div>
+        <div className="bg-primary h-[2px] mb-4"></div>
         <div className="flex flex-col text-base items-start justify-start">
           <form
             className="flex flex-col w-full"
@@ -152,7 +152,7 @@ const TambahVideo = ({ isAdmin }) => {
               <input
                 type="text"
                 className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
-                placeholder="Subjudul"
+                placeholder="Link Video"
                 onChange={(e) => setVideo(e.target.value)}
                 required
               />

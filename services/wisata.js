@@ -96,13 +96,12 @@ export const getWisata = async (token, category_id) => {
 
 export const createWisata = async (
   token,
+  category_id,
   title,
   titleSm,
   subtitleSm,
   content,
-  image,
-  inputDate,
-  category_id
+  image
 ) => {
   const formData = new FormData();
   formData.append("title", title);
@@ -110,7 +109,7 @@ export const createWisata = async (
   formData.append("subtitleSm", subtitleSm);
   formData.append("content", content);
   formData.append("image", image);
-  formData.append("inputDate", inputDate);
+
   try {
     const res = await axios.post(
       `https://apiku.desawisatapunjulharjo.com/api/facilities/${category_id}`,
@@ -123,10 +122,8 @@ export const createWisata = async (
       }
     );
     if (res.data) {
-      // console.log("Ios added:", res.data);
       return res.data;
     } else {
-      // console.log("No response from server");
       return null;
     }
   } catch (error) {

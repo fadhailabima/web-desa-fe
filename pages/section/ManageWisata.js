@@ -73,13 +73,19 @@ const ManageFasilitas = ({ id, isAdmin }) => {
   const searchTermLower = searchTerm?.toLowerCase() || "";
 
   const filteredItems = wisata?.filter((item) =>
-    item.nama?.toLowerCase().includes(searchTermLower)
+    item.title?.toLowerCase().includes(searchTermLower)
   );
   const totalPages = Math.ceil((filteredItems?.length ?? 0) / itemsPerPage);
   const currentItems = filteredItems?.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
+
+  const handleViewDescription = (content) => {
+    const newWindow = window.open();
+    newWindow.document.write(content);
+    newWindow.document.close();
+  };
 
   return (
     <main>
@@ -137,9 +143,6 @@ const ManageFasilitas = ({ id, isAdmin }) => {
                           Cover
                         </th>
                         <th className="text-center py-3 text-xs font-medium tracking-wider text-black uppercase">
-                          Created Date
-                        </th>
-                        <th className="text-center py-3 text-xs font-medium tracking-wider text-black uppercase">
                           Update
                         </th>
                         <th className="text-center py-3 text-xs font-medium tracking-wider text-black uppercase">
@@ -186,9 +189,6 @@ const ManageFasilitas = ({ id, isAdmin }) => {
                               />
                             </td>
                             <td className="text-center py-4 text-sm text-black">
-                              {item.inputDate}
-                            </td>
-                            <td className="text-center py-4 text-sm text-black">
                               <Link href={`/updateFasilitas/${item.id}`}>
                                 <button className="link-button">Update</button>
                               </Link>
@@ -205,7 +205,7 @@ const ManageFasilitas = ({ id, isAdmin }) => {
                         ))}
                       {deletePopupVisible && (
                         <DeletePopup
-                          onConfirm={deleteWisata}
+                          onConfirm={handleDeleteWisata}
                           onCancel={handleCancelDelete}
                         />
                       )}
