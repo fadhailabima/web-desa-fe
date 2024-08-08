@@ -43,12 +43,12 @@ const Navbar = () => {
         <div className="flex justify-between">
           <div className="flex pt-[21px] pb-[23px]">
             <img
-              src="/rembang-logo.png"
+              src="https://pub-42bc368a5a10428f9e8d9eca4d5331e4.r2.dev/rembang-logo.png"
               alt="logo kabupaten rembang"
               className="w-[61px]"
             />
             <img
-              src="/kkn-logo.png"
+              src="https://pub-42bc368a5a10428f9e8d9eca4d5331e4.r2.dev/logo%20kkn%20punjulharjo%201%20foto.png"
               alt="logo kkn"
               className="w-[61px] ml-[30px] py-[10px]"
             />

@@ -17,12 +17,12 @@ const Footer = () => {
           <div className="md:max-w-[25%] mt-12 md:mt-0">
             <div className="flex">
               <img
-                src="/rembang-logo.png"
+                src="https://pub-42bc368a5a10428f9e8d9eca4d5331e4.r2.dev/rembang-logo.png"
                 alt="logo kabupaten rembang"
                 className="w-[31px] h-[40px]"
               />
               <img
-                src="/kkn-logo.png"
+                src="https://pub-42bc368a5a10428f9e8d9eca4d5331e4.r2.dev/logo%20kkn%20punjulharjo%201%20foto.png"
                 alt="logo kkn"
                 className="w-[31px] py-[5px] ml-[5px]"
               />
