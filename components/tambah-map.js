@@ -6,6 +6,7 @@ import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { useRouter } from "next/router";
 import { addMap } from "@/services/map";
 import { useParams } from "next/navigation";
+import PopUp from "./Popup";
 
 function DraggableMarker({ position, setPosition }) {
   const [draggable, setDraggable] = useState(false);
@@ -113,100 +114,103 @@ export default function MapTambah() {
   };
 
   return (
-    <div className="flex flex-row">
-      {isLoaded ? (
-        <MapContainer
-          center={[center.lat, center.lng]}
-          zoom={13}
-          style={{ height: "80vh", width: "100%" }}
-        >
-          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-          <DraggableMarker position={position} setPosition={setPosition} />
-        </MapContainer>
-      ) : null}
-      <div className="container w-1/2">
-        <form
-          onSubmit={handleAddMap}
-          className="gap-5"
-          encType="multipart/form-data"
-        >
-          <div className="relative w-full">
-            <h1>Nama Lokasi</h1>
-            <input
-              type="text"
-              className="p-2 text-base w-full border border-gray-300 bg-white rounded focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-300 hover:border-gray-500"
-              placeholder="Masukkan nama lokasi"
-              onChange={(e) => setLokasi(e.target.value)}
-              required
-            />
-          </div>
-          <div className="relative w-full">
-            <h1>Latitude</h1>
-            <input
-              type="text"
-              className="p-2 text-base w-full border border-gray-300 bg-white rounded focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-300 hover:border-gray-500"
-              placeholder="Masukkan latitude"
-              value={position.lat}
-              onChange={(e) =>
-                setPosition({ ...position, lat: parseFloat(e.target.value) })
-              }
-              required
-            />
-          </div>
-          <div className="relative w-full">
-            <h1>Longitude</h1>
-            <input
-              type="text"
-              className="p-2 text-base w-full border border-gray-300 bg-white rounded focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-300 hover:border-gray-500"
-              placeholder="Masukkan longitude"
-              value={position.lng}
-              onChange={(e) =>
-                setPosition({ ...position, lng: parseFloat(e.target.value) })
-              }
-              required
-            />
-          </div>
-          <div className="relative w-full">
-            <h1>Picture 1</h1>
-            <input
-              type="file"
-              id="foto_1"
-              name="foto_1"
-              accept="image/*"
-              className="p-2 text-base w-full border border-gray-300 bg-white rounded focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-300 hover:border-gray-500"
-              onChange={handleFileChangeFoto1}
-            />
-          </div>
-          <div className="relative w-full">
-            <h1>Picture 2</h1>
-            <input
-              type="file"
-              id="foto_2"
-              name="foto_2"
-              accept="image/*"
-              className="p-2 text-base w-full border border-gray-300 bg-white rounded focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-300 hover:border-gray-500"
-              onChange={handleFileChangeFoto2}
-            />
-          </div>
-          <div className="relative w-full">
-            <h1>Picture 3</h1>
-            <input
-              type="file"
-              id="foto_3"
-              name="foto_3"
-              accept="image/*"
-              className="p-2 text-base w-full border border-gray-300 bg-white rounded focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-300 hover:border-gray-500"
-              onChange={handleFileChangeFoto3}
-            />
-          </div>
-          <button
-            type="submit"
-            className="capitalize my-3 py-3 px-10 text-base rounded-full cursor-pointer border-none text-white font-bold bg-primary hover:opacity-80"
+    <>
+      <PopUp text={popupText} isOpen={showPopup} type={popupType} />
+      <div className="flex flex-row">
+        {isLoaded ? (
+          <MapContainer
+            center={[center.lat, center.lng]}
+            zoom={13}
+            style={{ height: "80vh", width: "100%" }}
           >
-            Tambah
-          </button>
-        </form>
+            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+            <DraggableMarker position={position} setPosition={setPosition} />
+          </MapContainer>
+        ) : null}
+        <div className="container w-1/2">
+          <form
+            onSubmit={handleAddMap}
+            className="gap-5"
+            encType="multipart/form-data"
+          >
+            <div className="relative w-full">
+              <h1>Nama Lokasi</h1>
+              <input
+                type="text"
+                className="p-2 text-base w-full border border-gray-300 bg-white rounded focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-300 hover:border-gray-500"
+                placeholder="Masukkan nama lokasi"
+                onChange={(e) => setLokasi(e.target.value)}
+                required
+              />
+            </div>
+            <div className="relative w-full">
+              <h1>Latitude</h1>
+              <input
+                type="text"
+                className="p-2 text-base w-full border border-gray-300 bg-white rounded focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-300 hover:border-gray-500"
+                placeholder="Masukkan latitude"
+                value={position.lat}
+                onChange={(e) =>
+                  setPosition({ ...position, lat: parseFloat(e.target.value) })
+                }
+                required
+              />
+            </div>
+            <div className="relative w-full">
+              <h1>Longitude</h1>
+              <input
+                type="text"
+                className="p-2 text-base w-full border border-gray-300 bg-white rounded focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-300 hover:border-gray-500"
+                placeholder="Masukkan longitude"
+                value={position.lng}
+                onChange={(e) =>
+                  setPosition({ ...position, lng: parseFloat(e.target.value) })
+                }
+                required
+              />
+            </div>
+            <div className="relative w-full">
+              <h1>Picture 1</h1>
+              <input
+                type="file"
+                id="foto_1"
+                name="foto_1"
+                accept="image/*"
+                className="p-2 text-base w-full border border-gray-300 bg-white rounded focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-300 hover:border-gray-500"
+                onChange={handleFileChangeFoto1}
+              />
+            </div>
+            <div className="relative w-full">
+              <h1>Picture 2</h1>
+              <input
+                type="file"
+                id="foto_2"
+                name="foto_2"
+                accept="image/*"
+                className="p-2 text-base w-full border border-gray-300 bg-white rounded focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-300 hover:border-gray-500"
+                onChange={handleFileChangeFoto2}
+              />
+            </div>
+            <div className="relative w-full">
+              <h1>Picture 3</h1>
+              <input
+                type="file"
+                id="foto_3"
+                name="foto_3"
+                accept="image/*"
+                className="p-2 text-base w-full border border-gray-300 bg-white rounded focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-300 hover:border-gray-500"
+                onChange={handleFileChangeFoto3}
+              />
+            </div>
+            <button
+              type="submit"
+              className="capitalize my-3 py-3 px-10 text-base rounded-full cursor-pointer border-none text-white font-bold bg-primary hover:opacity-80"
+            >
+              Tambah
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
