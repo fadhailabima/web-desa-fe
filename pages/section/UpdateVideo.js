@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { useRouter } from "next/router";
 import PopUp from "@/components/Popup";
-import { createVideo } from "@/services/video";
+import { editVideo, getVideosById } from "@/services/video";
 import "quill/dist/quill.snow.css";
 
 const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
@@ -12,7 +12,10 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
   loading: () => <p>Loading ...</p>,
 });
 
-const TambahVideo = ({ isAdmin }) => {
+const UpdateVideo = ({ id, isAdmin }) => {
+  const [videos, setVideos] = useState("");
+  const token =
+    typeof window !== "undefined" ? localStorage.getItem("token") : null;
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState("");
   const [titleSm, setTitleSm] = useState("");
@@ -25,40 +28,55 @@ const TambahVideo = ({ isAdmin }) => {
   const [popupText, setPopupText] = useState("");
   const [popupType, setPopupType] = useState("");
   const router = useRouter();
+  const strippedPlaceholder =
+    videos?.content.replace(/<[^>]+>/g, "") || "Masukkan Deskripsi Video";
 
-  const handleAddVideo = async (e) => {
+  const handleEditVideo = async (e) => {
     e.preventDefault();
-    if (!content) {
-      setPopupText("Deskripsi Wajib Diisi");
-      setPopupType("error");
-      setShowPopup(true);
-      return;
-    }
-    const token = localStorage.getItem("token");
-    const res = await createVideo(
-      token,
-      title,
-      titleSm,
-      subtitleSm,
-      content,
-      video,
-      inputDate
-    );
+    // if (!content) {
+    //   setPopupText("Deskripsi Wajib Diisi");
+    //   setPopupType("error");
+    //   setShowPopup(true);
+    //   return;
+    // }
+    let updateData = {};
+    if (title) updateData.title = title;
+    if (titleSm) updateData.titleSm = titleSm;
+    if (subtitleSm) updateData.subtitleSm = subtitleSm;
+    if (content) updateData.content = content;
+    if (video) updateData.video = video;
+    if (inputDate) updateData.inputDate = inputDate;
+    const res = await editVideo(token, id, updateData);
     if (res) {
-      console.log("Blog added:", res);
-      setPopupText("Video Berhasil Ditambah");
+      console.log("Video updated:", res);
+      setPopupText("Video Berhasil Diupdate");
       setPopupType("success");
       setShowPopup(true);
       setTimeout(() => {
         router.push("/video");
       }, 1500);
     } else {
-      console.log("Failed to add ios");
-      setPopupText("Video Gagal Ditambahkan");
+      console.log("Failed to update video");
+      setPopupText("Video Gagal Diupdate");
       setPopupType("error");
       setShowPopup(true);
     }
   };
+
+  useEffect(() => {
+    if (id && token) {
+      const fetchVideo = async () => {
+        try {
+          const data = await getVideosById(token, id);
+          setVideos(data);
+        } catch (err) {
+          console.error(err);
+        }
+      };
+
+      fetchVideo();
+    }
+  }, [id, token]);
 
   return (
     <main>
@@ -74,7 +92,7 @@ const TambahVideo = ({ isAdmin }) => {
             </Link>
           </div>
           <h2 className="text-black ml-2 text-2xl font-semibold">
-            {isAdmin ? "Tambah Video" : "Tambah Video"}
+            {isAdmin ? "Update Video" : "Update Video"}
           </h2>
         </div>
         <div className="mt-1"></div>
@@ -83,7 +101,7 @@ const TambahVideo = ({ isAdmin }) => {
           <form
             className="flex flex-col w-full"
             encType="multipart/form-data"
-            onSubmit={handleAddVideo}
+            onSubmit={handleEditVideo}
           >
             <div className="mb-6 flex flex-col">
               <label className="mb-2 text-sm font-medium text-black">
@@ -92,9 +110,8 @@ const TambahVideo = ({ isAdmin }) => {
               <input
                 type="text"
                 className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
-                placeholder="Judul "
+                placeholder={videos?.title || "Masukkan Judul Video"}
                 onChange={(e) => setTitle(e.target.value)}
-                required
               />
             </div>
             <div className="mb-6 flex flex-col">
@@ -104,9 +121,8 @@ const TambahVideo = ({ isAdmin }) => {
               <input
                 type="text"
                 className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
-                placeholder="Judul Halaman"
+                placeholder={videos?.titleSm || "Masukkan Judul Halaman"}
                 onChange={(e) => setTitleSm(e.target.value)}
-                required
               />
             </div>
             <div className="mb-6 flex flex-col">
@@ -116,9 +132,8 @@ const TambahVideo = ({ isAdmin }) => {
               <input
                 type="text"
                 className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
-                placeholder="Subjudul"
+                placeholder={videos?.subtitleSm || "Masukkan SubJudul Video"}
                 onChange={(e) => setSubtitleSm(e.target.value)}
-                required
               />
             </div>
             <div className="mb-6 flex flex-col">
@@ -129,6 +144,7 @@ const TambahVideo = ({ isAdmin }) => {
                 value={content}
                 onChange={setDescription}
                 theme="snow"
+                placeholder={strippedPlaceholder}
                 className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
               />
             </div>
@@ -141,7 +157,6 @@ const TambahVideo = ({ isAdmin }) => {
                 className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
                 placeholder="Tanggal Rilis"
                 onChange={(e) => setInputDate(e.target.value)}
-                required
               />
             </div>
             <div className="mb-6 flex flex-col">
@@ -152,9 +167,8 @@ const TambahVideo = ({ isAdmin }) => {
               <input
                 type="text"
                 className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
-                placeholder="Link Video"
+                placeholder={videos?.video || "Masukkan Link Video"}
                 onChange={(e) => setVideo(e.target.value)}
-                required
               />
             </div>
             <div>
@@ -173,4 +187,4 @@ const TambahVideo = ({ isAdmin }) => {
   );
 };
 
-export default TambahVideo;
+export default UpdateVideo;
