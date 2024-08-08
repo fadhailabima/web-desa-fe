@@ -121,6 +121,30 @@ export default function MapTambah() {
                         />
                     </div>
                     <div className="relative w-full">
+                        <h1>Picture 1</h1>
+                        <input
+                            type="image"
+                            className="p-2 text-base w-full border border-gray-300 bg-white rounded focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-300 hover:border-gray-500"
+                            
+                        />
+                    </div>
+                    <div className="relative w-full">
+                        <h1>Picture 2</h1>
+                        <input
+                            type="image"
+                            className="p-2 text-base w-full border border-gray-300 bg-white rounded focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-300 hover:border-gray-500"
+                            
+                        />
+                    </div>
+                    <div className="relative w-full">
+                        <h1>Picture 3</h1>
+                        <input
+                            type="image"
+                            className="p-2 text-base w-full border border-gray-300 bg-white rounded focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-300 hover:border-gray-500"
+                            
+                        />
+                    </div>
+                    <div className="relative w-full">
                         <h1>Longitude</h1>
                         <input
                             type="text"

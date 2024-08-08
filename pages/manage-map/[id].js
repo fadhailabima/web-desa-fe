@@ -16,12 +16,12 @@ export async function getServerSideProps(context) {
 
 const manageMap = (props) => {
   return (
-    <>
+    <div className="z-30">
       <Head>
         <title>Manage Map By Kategori</title>
       </Head>
       <ManageMap {...props} />
-    </>
+    </div>
   );
 };
 

@@ -94,7 +94,7 @@ const ManageMap = ({ id, isAdmin }) => {
           </div>
         </div>
       </div>
-      <div className="container m-5 mx-auto w-3/4">
+      <div className="container z-30 m-5 mx-auto w-3/4">
         <Maps data={lokasi} onDelete={showDeletePopup} />
       </div>
       {deletePopupVisible && (
