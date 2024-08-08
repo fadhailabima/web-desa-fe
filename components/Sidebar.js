@@ -47,7 +47,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
       <div className="md:w-60 bg-white h-screen flex-1 fixed border-r border-zinc-200 hidden md:flex">
         <div className="flex flex-col space-y-6 w-full">
           <div className="flex flex-row space-x-3 items-center justify-center md:justify-start md:px-6 border-b border-zinc-200 h-14 w-full">
-            <img src="kkn-logo.png" style={{ width: "50px", height: "50px" }} />
+            <img
+              src="https://pub-42bc368a5a10428f9e8d9eca4d5331e4.r2.dev/logo%20kkn%20punjulharjo%201%20foto.png"
+              style={{ width: "50px", height: "50px" }}
+            />
           </div>
           <div className="flex flex-col space-y-5  md:px-4 ">
             <Link
