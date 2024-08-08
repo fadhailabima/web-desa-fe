@@ -3,7 +3,7 @@ import React from "react";
 const DeletePopup = ({ onConfirm, onCancel }) => {
   return (
     <>
-      <div style={{"zIndex" : "900"}} className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-white p-5 rounded-md w-9/10 max-w-xs sm:w-7/10 sm:p-8 lg:w-1/2 lg:p-10">
+      <div style={{"zIndex" : "900"}} className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-white p-5 rounded-md sm:p-8 lg:w-1/2 lg:p-10">
         <h1 className="text-3xl font-bold mb-6 text-center sm:text-4xl lg:text-5xl">
           Apakah Anda Yakin Ingin Menghapus Data Ini?
         </h1>
@@ -22,7 +22,7 @@ const DeletePopup = ({ onConfirm, onCancel }) => {
           </button>
         </div>
       </div>
-      <div className="z-40 bg-black fixed opacity-50 top-0 left-0 w-full h-full"></div>
+      <div style={{"zIndex" : "800"}} className="z-40 bg-black fixed opacity-50 top-0 left-0 w-full h-full"></div>
     </>
   );
 };

@@ -40,11 +40,8 @@ const TambahKategoriMap = ({ isAdmin }) => {
     <main className="mt-2 bg-white p-4 shadow-sm rounded-md max-w-md mx-auto">
       <PopUp text={popupText} isOpen={showPopup} type={popupType} />
       <div className="sm:p-2">
-        <div className="flex justify-between items-center mb-4 sm:flex-col sm:items-start">
-          <h2 className="text-black text-lg font-semibold pb-1 sm:text-base">
-            {isAdmin ? "Tambah Kategori Map" : "Tambah Kategori Map"}
-          </h2>
-          <div>
+        <div className="flex mb-4 items-center">
+          <div className="text-primary hover:opacity-90">
             <Link href="/kategori-map">
               <Icon
                 icon="iconamoon:arrow-left-5-circle-fill"
@@ -52,9 +49,12 @@ const TambahKategoriMap = ({ isAdmin }) => {
               />
             </Link>
           </div>
+          <h2 className="text-black ml-2 text-2xl font-semibold pb-1">
+            {isAdmin ? "Tambah Kategori Map" : "Tambah Kategori Map"}
+          </h2>
         </div>
         <div className="mt-1"></div>
-        <div className="bg-blue-500 h-px mb-4"></div>
+        <div className="bg-primary h-[2px] mb-4"></div>
         <div className="flex flex-col text-base items-start justify-start">
           <form
             className="flex flex-col w-full"
@@ -67,7 +67,7 @@ const TambahKategoriMap = ({ isAdmin }) => {
               </label>
               <input
                 type="text"
-                className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-blue-500"
+                className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
                 placeholder="Nama Kategori"
                 onChange={(e) => setKategori(e.target.value)}
                 required
@@ -75,7 +75,7 @@ const TambahKategoriMap = ({ isAdmin }) => {
             </div>
             <div>
               <button
-                className="w-full mt-6 mb-3 rounded-md py-3 text-lg text-white font-semibold text-center bg-gradient-to-r from-blue-500 to-light-blue-500 disabled:bg-gray-400"
+                className="w-full mt-6 mb-3 rounded-md py-3 text-lg text-white font-semibold text-center bg-primary hover:opacity-80"
                 type="submit"
                 disabled={loading}
               >

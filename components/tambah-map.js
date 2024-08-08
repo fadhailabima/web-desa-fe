@@ -154,6 +154,19 @@ export default function MapTambah() {
             />
           </div>
           <div className="relative w-full">
+            <h1>Longitude</h1>
+            <input
+              type="text"
+              className="p-2 text-base w-full border border-gray-300 bg-white rounded focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-300 hover:border-gray-500"
+              placeholder="Masukkan longitude"
+              value={position.lng}
+              onChange={(e) =>
+                setPosition({ ...position, lng: parseFloat(e.target.value) })
+              }
+              required
+            />
+          </div>
+          <div className="relative w-full">
             <h1>Picture 1</h1>
             <input
               type="file"
@@ -186,22 +199,9 @@ export default function MapTambah() {
               onChange={handleFileChangeFoto3}
             />
           </div>
-          <div className="relative w-full">
-            <h1>Longitude</h1>
-            <input
-              type="text"
-              className="p-2 text-base w-full border border-gray-300 bg-white rounded focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-300 hover:border-gray-500"
-              placeholder="Masukkan longitude"
-              value={position.lng}
-              onChange={(e) =>
-                setPosition({ ...position, lng: parseFloat(e.target.value) })
-              }
-              required
-            />
-          </div>
           <button
             type="submit"
-            className="capitalize py-3 px-10 text-base rounded-full cursor-pointer border-none text-white font-bold bg-gradient-to-r from-blue-500 to-blue-600"
+            className="capitalize my-3 py-3 px-10 text-base rounded-full cursor-pointer border-none text-white font-bold bg-primary hover:opacity-80"
           >
             Tambah
           </button>
