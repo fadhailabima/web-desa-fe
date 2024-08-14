@@ -13,7 +13,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-export default function Maps({ data, onDelete }) {
+export default function Maps({ data, onDelete, id }) {
   const [center, setCenter] = useState([0, 0]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [deletePopupVisible, setDeletePopupVisible] = useState(false);
@@ -73,6 +73,9 @@ export default function Maps({ data, onDelete }) {
                     >
                       Delete
                     </button>
+                    <Link href={`/update-map/${item.id}?mapId=${id}`}>
+                      <button className=" ml-2 link-button">Update</button>
+                    </Link>
                   </div>
                 </div>
               </Popup>

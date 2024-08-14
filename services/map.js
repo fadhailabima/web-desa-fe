@@ -230,3 +230,34 @@ export const getMapByIdPublic = async (id) => {
     throw error; // re-throw the error
   }
 };
+
+export const editLokasi = async (token, id, updateData) => {
+  const formData = new FormData();
+
+  for (let key in updateData) {
+    if (updateData[key] != null) {
+      formData.append(key, updateData[key]);
+    }
+  }
+
+  try {
+    const res = await axios.post(
+      `https://apiku.desawisatapunjulharjo.com/api/locationsUpdate/${id}`,
+      formData,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+    if (res.data) {
+      return res.data; // return the response data
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error("An error occurred while updating the blog:", error);
+    return null;
+  }
+};

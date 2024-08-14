@@ -187,7 +187,7 @@ const ManageBlog = ({ isAdmin }) => {
                               {item.inputDate}
                             </td>
                             <td className="text-center py-4 text-sm text-black">
-                              <Link href={`/updateBlog/${item.id}`}>
+                              <Link href={`/update-blog/${item.id}`}>
                                 <button className="link-button">Update</button>
                               </Link>
                             </td>

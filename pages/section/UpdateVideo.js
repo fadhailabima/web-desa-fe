@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
@@ -13,7 +13,6 @@ const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
 });
 
 const UpdateVideo = ({ id, isAdmin }) => {
-  const [videos, setVideos] = useState("");
   const token =
     typeof window !== "undefined" ? localStorage.getItem("token") : null;
   const [loading, setLoading] = useState(false);
@@ -28,8 +27,7 @@ const UpdateVideo = ({ id, isAdmin }) => {
   const [popupText, setPopupText] = useState("");
   const [popupType, setPopupType] = useState("");
   const router = useRouter();
-  const strippedPlaceholder =
-    videos?.content.replace(/<[^>]+>/g, "") || "Masukkan Deskripsi Video";
+  const quillRef = useRef(null);
 
   const handleEditVideo = async (e) => {
     e.preventDefault();
@@ -68,7 +66,12 @@ const UpdateVideo = ({ id, isAdmin }) => {
       const fetchVideo = async () => {
         try {
           const data = await getVideosById(token, id);
-          setVideos(data);
+          setTitle(data.title);
+          setTitleSm(data.titleSm);
+          setSubtitleSm(data.subtitleSm);
+          setDescription(data.content);
+          setInputDate(data.inputDate);
+          setVideo(data.video);
         } catch (err) {
           console.error(err);
         }
@@ -110,7 +113,7 @@ const UpdateVideo = ({ id, isAdmin }) => {
               <input
                 type="text"
                 className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
-                placeholder={videos?.title || "Masukkan Judul Video"}
+                value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
             </div>
@@ -121,7 +124,7 @@ const UpdateVideo = ({ id, isAdmin }) => {
               <input
                 type="text"
                 className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
-                placeholder={videos?.titleSm || "Masukkan Judul Halaman"}
+                value={titleSm}
                 onChange={(e) => setTitleSm(e.target.value)}
               />
             </div>
@@ -132,7 +135,7 @@ const UpdateVideo = ({ id, isAdmin }) => {
               <input
                 type="text"
                 className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
-                placeholder={videos?.subtitleSm || "Masukkan SubJudul Video"}
+                value={subtitleSm}
                 onChange={(e) => setSubtitleSm(e.target.value)}
               />
             </div>
@@ -144,7 +147,7 @@ const UpdateVideo = ({ id, isAdmin }) => {
                 value={content}
                 onChange={setDescription}
                 theme="snow"
-                placeholder={strippedPlaceholder}
+                ref={quillRef}
                 className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
               />
             </div>
@@ -156,6 +159,7 @@ const UpdateVideo = ({ id, isAdmin }) => {
                 type="date"
                 className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
                 placeholder="Tanggal Rilis"
+                value={inputDate}
                 onChange={(e) => setInputDate(e.target.value)}
               />
             </div>
@@ -167,7 +171,7 @@ const UpdateVideo = ({ id, isAdmin }) => {
               <input
                 type="text"
                 className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
-                placeholder={videos?.video || "Masukkan Link Video"}
+                value={video}
                 onChange={(e) => setVideo(e.target.value)}
               />
             </div>

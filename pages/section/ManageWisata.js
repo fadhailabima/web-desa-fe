@@ -143,10 +143,10 @@ const ManageFasilitas = ({ id, isAdmin }) => {
                           Cover
                         </th>
                         <th className="text-center py-3 text-xs font-medium tracking-wider text-black uppercase">
-                          Update
+                          Action 1
                         </th>
                         <th className="text-center py-3 text-xs font-medium tracking-wider text-black uppercase">
-                          Delete
+                          Action 2
                         </th>
                       </tr>
                     </thead>
@@ -189,7 +189,9 @@ const ManageFasilitas = ({ id, isAdmin }) => {
                               />
                             </td>
                             <td className="text-center py-4 text-sm text-black">
-                              <Link href={`/updateFasilitas/${item.id}`}>
+                              <Link
+                                href={`/updateFasilitas/${item.id}?wisataId=${id}`}
+                              >
                                 <button className="link-button">Update</button>
                               </Link>
                             </td>

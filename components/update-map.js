@@ -4,7 +4,7 @@ import "leaflet-defaulticon-compatibility";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { useRouter } from "next/router";
-import { addMap } from "@/services/map";
+import { editLokasi, getMapById } from "@/services/map";
 import { useParams } from "next/navigation";
 import PopUp from "./Popup";
 
@@ -46,21 +46,10 @@ function DraggableMarker({ position, setPosition }) {
   );
 }
 
-export default function MapTambah() {
-  const { id } = useParams();
+export default function MapUpdate({ id, catlocsId }) {
   const [center, setCenter] = useState({ lat: 0, lng: 0 });
   const [isLoaded, setIsLoaded] = useState(false);
   const [position, setPosition] = useState({ lat: 0, lng: 0 });
-
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      const { latitude, longitude } = position.coords;
-      setCenter({ lat: latitude, lng: longitude });
-      setPosition({ lat: latitude, lng: longitude });
-      setIsLoaded(true);
-    });
-  }, []);
-
   const [loading, setLoading] = useState(false);
   const [nama_lokasi, setLokasi] = useState("");
   const [foto_1, setFoto_1] = useState("");
@@ -71,6 +60,8 @@ export default function MapTambah() {
   const [showPopup, setShowPopup] = useState(false);
   const [popupText, setPopupText] = useState("");
   const [popupType, setPopupType] = useState("");
+  const token =
+    typeof window !== "undefined" ? localStorage.getItem("token") : null;
 
   const handleFileChangeFoto1 = (e) => {
     setFoto_1(e.target.files[0]);
@@ -84,34 +75,53 @@ export default function MapTambah() {
     setFoto_3(e.target.files[0]);
   };
 
-  const handleAddMap = async (e) => {
+  const handleEditMap = async (e) => {
     e.preventDefault();
-    const token = localStorage.getItem("token");
-    const res = await addMap(
-      token,
-      id,
-      nama_lokasi,
-      position.lat,
-      position.lng,
-      foto_1,
-      foto_2,
-      foto_3
-    );
+    let updateData = {};
+    if (nama_lokasi) updateData.nama_lokasi = nama_lokasi;
+    if (position.lat) updateData.lat = position.lat;
+    if (position.lng) updateData.lng = position.lng;
+    if (foto_1) updateData.foto_1 = foto_1;
+    if (foto_2) updateData.foto_2 = foto_2;
+    if (foto_3) updateData.foto_3 = foto_3;
+    const res = await editLokasi(token, id, updateData);
     if (res) {
-      console.log("Lokasi added:", res);
-      setPopupText("Lokasi Berhasil Ditambah");
+      console.log("Lokasi updated:", res);
+      setPopupText("Lokasi Berhasil Di Update");
       setPopupType("success");
       setShowPopup(true);
       setTimeout(() => {
-        router.push(`/manage-map/${id}`);
+        router.push(`/manage-map/${catlocsId}`);
       }, 1500);
     } else {
-      console.log("Failed to add lokasi");
-      setPopupText("Lokasi Gagal Ditambah");
+      console.log("Failed to update lokasi");
+      setPopupText("Lokasi Gagal Di Update");
       setPopupType("error");
       setShowPopup(true);
     }
   };
+
+  useEffect(() => {
+    if (id && token) {
+      const fetchLokasi = async () => {
+        try {
+          const data = await getMapById(token, id);
+          setLokasi(data.nama_lokasi);
+          const newLocation = {
+            lat: Number(data.latitude),
+            lng: Number(data.longitude),
+          };
+          setPosition(newLocation);
+          setCenter(newLocation);
+          setIsLoaded(true);
+        } catch (err) {
+          console.error(err);
+        }
+      };
+
+      fetchLokasi();
+    }
+  }, [id, token]);
 
   return (
     <>
@@ -129,7 +139,7 @@ export default function MapTambah() {
         ) : null}
         <div className="container w-1/2">
           <form
-            onSubmit={handleAddMap}
+            onSubmit={handleEditMap}
             className="gap-5"
             encType="multipart/form-data"
           >
@@ -138,7 +148,7 @@ export default function MapTambah() {
               <input
                 type="text"
                 className="p-2 text-base w-full border border-gray-300 bg-white rounded focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-300 hover:border-gray-500"
-                placeholder="Masukkan nama lokasi"
+                value={nama_lokasi}
                 onChange={(e) => setLokasi(e.target.value)}
                 required
               />
@@ -176,6 +186,7 @@ export default function MapTambah() {
                 id="foto_1"
                 name="foto_1"
                 accept="image/*"
+                value={foto_1}
                 className="p-2 text-base w-full border border-gray-300 bg-white rounded focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-300 hover:border-gray-500"
                 onChange={handleFileChangeFoto1}
               />
@@ -187,6 +198,7 @@ export default function MapTambah() {
                 id="foto_2"
                 name="foto_2"
                 accept="image/*"
+                value={foto_2}
                 className="p-2 text-base w-full border border-gray-300 bg-white rounded focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-300 hover:border-gray-500"
                 onChange={handleFileChangeFoto2}
               />
@@ -198,6 +210,7 @@ export default function MapTambah() {
                 id="foto_3"
                 name="foto_3"
                 accept="image/*"
+                value={foto_3}
                 className="p-2 text-base w-full border border-gray-300 bg-white rounded focus:outline-none focus:border-blue-300 focus:ring-2 focus:ring-blue-300 hover:border-gray-500"
                 onChange={handleFileChangeFoto3}
               />
@@ -207,12 +220,12 @@ export default function MapTambah() {
                 type="submit"
                 className="capitalize my-3 py-3 px-10 text-base rounded-full cursor-pointer border-none text-white font-bold bg-primary hover:opacity-80 flex-grow"
               >
-                Tambah
+                Update
               </button>
               <button
                 type="button"
                 className="capitalize my-3 py-3 px-10 text-base rounded-full cursor-pointer border-none text-white font-bold bg-red-500 hover:opacity-80 ml-4 flex-grow"
-                onClick={() => router.push(`/manage-map/${id}`)}
+                onClick={() => router.push(`/manage-map/${catlocsId}`)}
               >
                 Cancel
               </button>

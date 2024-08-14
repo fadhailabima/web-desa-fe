@@ -131,6 +131,7 @@ const TambahWisata = ({ id, isAdmin }) => {
               <QuillNoSSRWrapper
                 value={content}
                 onChange={setDescription}
+                placeholder="Deskripsi"
                 theme="snow"
                 className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
               />
