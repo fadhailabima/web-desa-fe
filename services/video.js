@@ -141,3 +141,37 @@ export const getVideosById = async (token, id) => {
     throw error; // re-throw the error
   }
 };
+
+export const getVideoAll = async () => {
+  try {
+    const res = await axios.get(
+      "https://apiku.desawisatapunjulharjo.com/api/videosPublic"
+    );
+    if (res.data) {
+      // console.log("Ios found :", res.data.data);
+      return res.data.data;
+    } else {
+      // console.log("No Ios found");
+      return null;
+    }
+  } catch (error) {
+    console.error("An error occurred while getting all Ios:", error);
+    return null;
+  }
+};
+
+export const getVideosPublicById = async (id) => {
+  try {
+    const res = await axios.get(
+      `https://apiku.desawisatapunjulharjo.com/api/videosPublic/${id}`
+    );
+    if (res.data) {
+      return res.data.data; // return the whole data object
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error("An error occurred while fetching the data:", error);
+    throw error; // re-throw the error
+  }
+};
