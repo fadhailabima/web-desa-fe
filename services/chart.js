@@ -35,7 +35,7 @@ export const getStatCategories = async (token) => {
     );
     if (res.data) {
       // console.log('BukuLinks found:', res.data.data);
-      return res.data.data; // return the user data
+      return res.data; // return the user data
     } else {
       // console.log('No bukulinks found');
       return null;

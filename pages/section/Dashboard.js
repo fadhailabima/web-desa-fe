@@ -44,8 +44,6 @@ const Dashboard = ({
           setLocsData([]);
           setJumlahCatlocs(0);
         }
-        console.log("response", response);
-        console.log("jumlah_catlocs", response.jumlah_catlocs);
 
         const kategoriData = await getStatCategories(token);
         if (kategoriData && kategoriData.data) {
@@ -55,7 +53,7 @@ const Dashboard = ({
             facilities_count: kategori.facilities_count,
           }));
           setChartData(chartDataFac);
-          setJumlahFacilities(kategoriData.jumlahKategori);
+          setJumlahFacilities(kategoriData.jumlah_kategori);
         } else {
           setChartData([]);
           setJumlahFacilities(0);
@@ -75,10 +73,9 @@ const Dashboard = ({
     }
   }, [router]);
 
-  const locationPolarAreaChartLabels =
-    locsData && locsData.data
-      ? locsData.data.map((catloc) => catloc.kategori_lokasi)
-      : [];
+  const locationPolarAreaChartLabels = Array.isArray(locsData)
+    ? locsData.map((catloc) => catloc.name)
+    : [];
 
   const locationPolarAreaChartOptions = {
     chart: {
@@ -114,43 +111,112 @@ const Dashboard = ({
       },
     },
   };
-  console.log("locsData", locsData);
-  let locationPolarAreaChartSeries = [];
-  if (locsData && locsData.data) {
-    locationPolarAreaChartSeries = locsData.data.map(
-      (catloc) => catloc.locations_count
-    );
-  }
-  // const facilitiesPolarAreaChartOptions = {
-  //   chart: {
-  //     type: "polarArea",
-  //     height: "100%",
-  //     width: "100%",
-  //   },
-  //   stroke: {
-  //     colors: ["#fff"],
-  //   },
-  //   fill: {
-  //     opacity: 0.8,
-  //   },
-  //   dataLabels: {
-  //     enabled: false,
-  //   },
-  //   yaxis: {
-  //     show: false,
-  //   },
-  //   legend: {
-  //     position: "bottom",
-  //   },
-  //   labels: chartData.data.map((category) => category.name),
-  //   title: {
-  //     text: "Data Lokasi",
-  //     align: "left",
-  //   },
-  // };
-  // const facilitiesPolarAreaChartSeries = chartData.data.map(
-  //   (category) => category.facilities_count
-  // );
+  const locationPolarAreaChartSeries = Array.isArray(locsData)
+    ? locsData.map((catloc) => catloc.locations_count)
+    : [];
+
+  const facilitiesPolarAreaChartLabels = Array.isArray(chartData)
+    ? chartData.map((catloc) => catloc.name)
+    : [];
+
+  const facilitiesPolarAreaChartOptions = {
+    chart: {
+      type: "polarArea",
+      height: "100%",
+      width: "100%",
+    },
+    stroke: {
+      colors: ["#fff"],
+    },
+    fill: {
+      opacity: 0.8,
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    yaxis: {
+      show: false,
+    },
+    legend: {
+      position: "bottom",
+    },
+    labels: facilitiesPolarAreaChartLabels,
+    title: {
+      text: "Data Wisata",
+      align: "left",
+    },
+    tooltip: {
+      y: {
+        formatter: function (val) {
+          return val;
+        },
+      },
+    },
+  };
+
+  const facilitiesPolarAreaChartSeries = Array.isArray(chartData)
+    ? chartData.map((catloc) => catloc.facilities_count)
+    : [];
+
+  const videoPolarAreaChartOptions = {
+    chart: {
+      type: "polarArea",
+      height: "100%",
+      width: "100%",
+    },
+    stroke: {
+      colors: ["#fff"],
+    },
+    fill: {
+      opacity: 0.8,
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    yaxis: {
+      show: false,
+    },
+    legend: {
+      position: "bottom",
+    },
+    labels: ["Video"],
+    title: {
+      text: "Data Video",
+      align: "left",
+    },
+  };
+
+  const videoAreaChartSeries = [videoData];
+
+  const blogPolarAreaChartOptions = {
+    chart: {
+      type: "polarArea",
+      height: "100%",
+      width: "100%",
+    },
+    stroke: {
+      colors: ["#fff"],
+    },
+    fill: {
+      opacity: 0.8,
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    yaxis: {
+      show: false,
+    },
+    legend: {
+      position: "bottom",
+    },
+    labels: ["Blog"],
+    title: {
+      text: "Data Blog",
+      align: "left",
+    },
+  };
+
+  const blogAreaChartSeries = [newsData];
   return (
     <main className="flex-1 max-h-full p-5">
       <div className="flex flex-col items-start justify-between pb-6 gap-4 border-b border-gray-300 lg:flex-row lg:items-center lg:gap-0">
@@ -163,6 +229,30 @@ const Dashboard = ({
           <Chart
             options={locationPolarAreaChartOptions}
             series={locationPolarAreaChartSeries}
+            type="polarArea"
+            height={350}
+          />
+        </div>
+        <div className="w-full overflow-hidden">
+          <Chart
+            options={facilitiesPolarAreaChartOptions}
+            series={facilitiesPolarAreaChartSeries}
+            type="polarArea"
+            height={350}
+          />
+        </div>
+        <div className="w-full overflow-hidden">
+          <Chart
+            options={videoPolarAreaChartOptions}
+            series={videoAreaChartSeries}
+            type="polarArea"
+            height={350}
+          />
+        </div>
+        <div className="w-full overflow-hidden">
+          <Chart
+            options={blogPolarAreaChartOptions}
+            series={blogAreaChartSeries}
             type="polarArea"
             height={350}
           />
