@@ -209,3 +209,51 @@ export const getFacilitiesById = async (token, id) => {
     throw error; // re-throw the error
   }
 };
+
+export const getKategoriPublic = async () => {
+  try {
+    const res = await axios.get(
+      "https://apiku.desawisatapunjulharjo.com/api/categoryPublic"
+    );
+    if (res.data) {
+      return res.data.data; // return the user data
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error("An error occurred while fetching the divisi:", error);
+    throw error; // re-throw the error
+  }
+};
+
+export const getWisataPublic = async (category_id) => {
+  try {
+    const res = await axios.get(
+      `https://apiku.desawisatapunjulharjo.com/api/facilitiesPublic/${category_id}`
+    );
+    if (res.data) {
+      return res.data.data; // return the whole data object
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error("An error occurred while fetching the data:", error);
+    throw error; // re-throw the error
+  }
+};
+
+export const getFacilitiesByIdPublic = async (id) => {
+  try {
+    const res = await axios.get(
+      `https://apiku.desawisatapunjulharjo.com/api/facilitiesByIdPublic/${id}`
+    );
+    if (res.data) {
+      return res.data.data; // return the whole data object
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error("An error occurred while fetching the data:", error);
+    throw error; // re-throw the error
+  }
+};
