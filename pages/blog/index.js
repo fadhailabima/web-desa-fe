@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Layout from "@/components/Layout";
 import CustomContainer from "@/components/customContainer";
 import { getBlogPublic } from "@/services/blog";
 import NavbarPadder from "@/components/navbarPadder";

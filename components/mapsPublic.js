@@ -3,7 +3,6 @@ import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
 import { useState, useEffect } from "react";
-import { deleteMap } from "@/services/map";
 import Link from "next/link";
 import {
   Carousel,
@@ -13,7 +12,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-export default function Maps({ data, onDelete, id }) {
+export default function MapsPublic({ data }) {
   const [center, setCenter] = useState([0, 0]);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -62,14 +61,8 @@ export default function Maps({ data, onDelete, id }) {
                     </Carousel>
                   </div>
                   <div className="flex items-center">
-                    <button
-                      className="ml-2 delete-button border border-gray-200 py-2 px-4 rounded-md bg-gradient-to-r from-red-500 to-red-700 text-white hover:bg-white hover:text-black"
-                      onClick={() => onDelete(item.id)}
-                    >
-                      Delete
-                    </button>
-                    <Link href={`/update-map/${item.id}?mapId=${id}`}>
-                      <button className=" ml-2 link-button">Update</button>
+                    <Link href={`/route-map/${item.id}`}>
+                      <button className="link-button">Rute</button>
                     </Link>
                   </div>
                 </div>

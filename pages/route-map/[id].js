@@ -1,31 +1,54 @@
-import LayoutAdmin from "@/components/LayoutAdmin";
-import Head from "next/head";
-import React from "react";
+"use client";
+import { useState, useEffect } from "react";
+import CustomContainer from "@/components/customContainer";
+import NavbarPadder from "@/components/navbarPadder";
+import TopBlur from "@/components/topBlur";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+import { getMapByIdPublic } from "@/services/map";
 
-const RouteMap = dynamic(() => import("@/pages/section/RouteMap"), {
+const MapWithRouting = dynamic(() => import("@/components/route-map"), {
   ssr: false,
 });
 
-export async function getServerSideProps(context) {
-  const { id } = context.params;
+const routeMap = () => {
+  const router = useRouter();
+  const { id } = router.query;
+  const [position, setPosition] = useState({ lat: 0, lng: 0 });
+  const [lokasi, setLokasi] = useState({});
 
-  return {
-    props: {
-      id,
-      isAdmin: true,
-    },
-  };
-}
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setPosition({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      });
+    });
+  }, []);
 
-const routeMap = (props) => {
+  useEffect(() => {
+    if (id) {
+      const fetchMap = async () => {
+        try {
+          const data = await getMapByIdPublic(id);
+          setLokasi(data);
+        } catch (err) {
+          console.error(err);
+        }
+      };
+      fetchMap();
+    }
+  }, [id]);
   return (
-    <>
-      <Head>
-        <title>Rute Map</title>
-      </Head>
-      <RouteMap {...props} />
-    </>
+    <section className="font-poppins mb-[150px]">
+      <NavbarPadder />
+      <TopBlur />
+      <CustomContainer>
+        <div className="container z-30 m-5 mx-auto w-full">
+          <MapWithRouting position={position} data={lokasi} />
+        </div>
+      </CustomContainer>
+    </section>
   );
 };
 
