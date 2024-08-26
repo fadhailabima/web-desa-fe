@@ -89,7 +89,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <h1>
+        {/* <h1>
           Copy Right © Developed by{" "}
           <Link
             className="hover:underline"
@@ -98,7 +98,7 @@ const Footer = () => {
           >
             Aliflikescoding
           </Link>
-        </h1>
+        </h1> */}
       </CustomContainer>
     </section>
   );

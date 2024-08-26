@@ -95,7 +95,13 @@ const ManageMap = ({ id, isAdmin }) => {
         </div>
       </div>
       <div className="container z-30 m-5 mx-auto w-3/4">
-        <Maps data={lokasi} onDelete={showDeletePopup} id={id}/>
+        {lokasi.length > 0 ? (
+          <Maps data={lokasi} onDelete={showDeletePopup} id={id} />
+        ) : (
+          <p className="text-center text-2xl mt-20">
+            Tambahkan titik lokasi terlebih dahulu.
+          </p>
+        )}
       </div>
       {deletePopupVisible && (
         <DeletePopup

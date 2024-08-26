@@ -41,7 +41,7 @@ const Video = ({ isAdmin }) => {
     const token = localStorage.getItem("token");
     if (token) {
       try {
-        const res = await deleteBlog(token, userToDelete);
+        const res = await deleteVideo(token, userToDelete);
         console.log("IOS deleted successfully");
         setDeletePopupVisible(false);
         setUserToDelete(null);

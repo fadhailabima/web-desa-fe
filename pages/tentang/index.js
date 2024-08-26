@@ -20,32 +20,23 @@ const tentang = () => {
           <div className="flex lg:flex-row flex-col">
             <div className="my-5 lg:my-0 lg:max-w-[50%]">
               <h1 className="text-3xl my-5 capitalize font-medium">
-                Tentang kami
+                Tentang Desa
               </h1>
               <p className="text-base leading-[160%]">
-                Desa Wisata Punjulharjo adalah destinasi wisata di Kabupaten
-                Pati, Jawa Tengah, yang menawarkan keindahan alam serta kekayaan
-                budaya lokal. Desa ini terkenal dengan pemandangan sawah yang
-                asri, situs bersejarah, dan kerajinan tangan tradisional.
-                Pengunjung dapat menikmati kehidupan pedesaan yang autentik,
-                berinteraksi dengan penduduk setempat, dan mengikuti berbagai
-                kegiatan budaya seperti membatik dan belajar kuliner
-                tradisional. Punjulharjo tidak hanya menjadi tempat rekreasi,
-                tetapi juga pusat edukasi budaya yang mendukung kelestarian
-                warisan tradisional dan pengembangan ekonomi lokal.
+                Desa Punjulharjo adalah destinasi wisata yang menarik dengan
+                potensi pengembangan yang sangat besar. Keberadaan situs
+                sejarah, keindahan alam, dan kekayaan budaya menjadikan desa ini
+                sebagai tempat yang unik dan layak untuk dikunjungi.
               </p>
               <div className="flex flex-wrap my-5 gap-12">
                 <div>
-                  <h1 className="text-3xl text-primary">1000</h1>
-                  <h2 className="text-xl">Tahun Berdiri</h2>
-                </div>
-                <div>
-                  <h1 className="text-3xl text-primary">50.000+</h1>
-                  <h2 className="text-xl">Penduduk</h2>
-                </div>
-                <div>
-                  <h1 className="text-3xl text-primary">2</h1>
-                  <h2 className="text-xl">Tahun Berdiri</h2>
+                  <h1 className="text-3xl text-primary">
+                    {" "}
+                    Secara geografis, desa ini berada di
+                  </h1>
+                  <h2 className="text-xl">
+                    111°00'-111°30' Bujur Timur (BT) dan 6°30'-7°1774.
+                  </h2>
                 </div>
               </div>
             </div>
@@ -70,18 +61,13 @@ const tentang = () => {
                 Sejarah Desa Punjulharjo
               </h1>
               <p className="text-base my-4 border-primary border-l-8 pl-5">
-                Desa Punjulharjo, yang terletak di Kabupaten Pati, Jawa Tengah,
-                memiliki sejarah panjang yang berkaitan dengan perkembangan
-                wilayah pesisir Jawa. Konon, desa ini telah ada sejak zaman
-                kerajaan Mataram, dengan penduduknya yang awalnya hidup dari
-                pertanian dan perikanan. Seiring waktu, Desa Punjulharjo
-                berkembang menjadi pusat kerajinan tangan dan budaya
-                tradisional, mencerminkan kekayaan adat dan sejarah lokal.
-                Pengaruh budaya Jawa sangat kental di desa ini, terlihat dari
-                tradisi seni dan kearifan lokal yang masih dipertahankan hingga
-                kini. Meskipun tidak ada catatan pasti mengenai tanggal
-                berdirinya, Desa Punjulharjo tetap dikenal sebagai bagian
-                penting dari sejarah Kabupaten Pati dan wilayah sekitarnya.
+                Desa Punjulharjo adalah bukti nyata bahwa Indonesia memiliki
+                kekayaan sejarah dan budaya yang sangat luar biasa. Penemuan
+                perahu kuno telah membuka mata dunia akan pentingnya wilayah
+                Nusantara dalam sejarah peradaban maritim. Dengan potensi wisata
+                yang sangat besar, Desa Punjulharjo diharapkan dapat menjadi
+                salah satu destinasi wisata sejarah yang paling populer di
+                Indonesia.
               </p>
             </div>
           </div>

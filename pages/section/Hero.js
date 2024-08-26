@@ -46,7 +46,10 @@ const Hero = () => {
               className="-z-20 absolute inset-0 object-cover w-full h-full"
             >
               <source
-                src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"
+                src="https://pub-42bc368a5a10428f9e8d9eca4d5331e4.r2.dev/Footage%20Web%20Desa.mov
+
+
+"
                 type="video/mp4"
               />
             </video>
