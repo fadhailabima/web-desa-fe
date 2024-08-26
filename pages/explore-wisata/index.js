@@ -30,16 +30,22 @@ const ExploreWisata = () => {
             Kategori Wisata
           </h1>
           <div className="flex flex-wrap mt-12 justify-center gap-5 ">
-            {kategori.map((data) => (
-              <div
-                key={data.id}
-                className="border-2 shadow-lg p-5 rounded-lg cursor-pointer hover:text-primary"
-              >
-                <Link href={`explore-wisata/${data.id}`}>
-                  <h1 className="text-xl">{data.kategori}</h1>
-                </Link>
-              </div>
-            ))}
+            {kategori.length > 0 ? (
+              kategori.map((data) => (
+                <div
+                  key={data.id}
+                  className="border-2 shadow-lg p-5 rounded-lg cursor-pointer hover:text-primary"
+                >
+                  <Link href={`explore-wisata/${data.id}`}>
+                    <h1 className="text-xl">{data.kategori}</h1>
+                  </Link>
+                </div>
+              ))
+            ) : (
+              <h2 className="text-center text-2xl col-span-full">
+                Tidak ada kategori wisata.
+              </h2>
+            )}
           </div>
         </div>
       </CustomContainer>

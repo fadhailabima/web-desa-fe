@@ -35,21 +35,21 @@ const WisataPost = () => {
       <TopBlur />
       <CustomContainer>
         <div className="flex flex-col justify-start items-center my-[50px] px-5">
-          <h1 className="text-4xl sm:text-5xl font-medium">{post.title}</h1>
+          <h1 className="text-4xl sm:text-5xl font-medium mb-10">
+            {post.title}
+          </h1>
           <img
             src={`${post.image_url}`}
             alt={post.title}
-            className="w-full h-auto rounded-lg my-12"
+            className="w-1/2 h-auto rounded-lg my-5 mx-auto"
           />
-          <div className="pt-24 lg:pt-24">
-            <div className="text-center">
-              <h1 className="titleSm">{post.subtitleSm}</h1>
-            </div>
-            <div
-              className="text-left"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
+          <div className="text-center">
+            <h2 className="text-lg mb-6 font-extrabold">{post.subtitleSm}</h2>
           </div>
+          <div
+            className="text-left"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
         </div>
       </CustomContainer>
     </section>

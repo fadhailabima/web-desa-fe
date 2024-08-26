@@ -43,7 +43,7 @@ const tentang = () => {
             <div className="ml-5">
               <img
                 className="rounded-lg"
-                src="/about-picture.jpg"
+                src="https://pub-42bc368a5a10428f9e8d9eca4d5331e4.r2.dev/63a949811f5c8.jpg"
                 alt="foto about"
               />
             </div>
