@@ -41,7 +41,7 @@ const TambahUser = ({ isAdmin }) => {
   };
 
   return (
-    <main className="mt-2 bg-white p-4 shadow-sm rounded-md max-w-7xl mx-auto">
+    <main className="mt-2 bg-white p-4 min-w-[50vw] shadow-sm rounded-md max-w-7xl mx-auto">
       <PopUp text={popupText} isOpen={showPopup} type={popupType} />
       <div className="sm:p-2">
         <div className="flex mb-4 items-center">

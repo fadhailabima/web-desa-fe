@@ -17,6 +17,7 @@ const Header = () => {
           "border-b border-gray-200 bg-white": selectedLayout,
         }
       )}
+      style={{zIndex: 50}}
     >
       <div className="flex h-[55px] items-center justify-center px-4">
         <div className="hidden md:block">
