@@ -4,15 +4,6 @@ import Link from "next/link";
 import NavbarPadder from "@/components/navbarPadder";
 
 const Hero = () => {
-  const [isVideo, setIsVideo] = useState(true);
-
-  useEffect(() => {
-    // Check if the hero.video value is empty or not and update state accordingly
-    if (hero.video === "") {
-      setIsVideo(false);
-    }
-  }, []); // Empty dependency array means this effect runs only once after the initial render
-
   return (
     <section className="font-poppins relative">
       <CustomContainer>
@@ -35,32 +26,23 @@ const Hero = () => {
           </Link>
         </div>
         <div className="-z-10 absolute inset-0 object-cover w-full h-full bg-black opacity-15"></div>
-        {isVideo ? (
-          <>
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="-z-20 absolute inset-0 object-cover w-full h-full"
-            >
-              <source
-                src="https://pub-42bc368a5a10428f9e8d9eca4d5331e4.r2.dev/Footage%20Web%20Desa.mov
+        <>
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="-z-20 absolute inset-0 object-cover w-full h-full"
+          >
+            <source
+              src="https://pub-42bc368a5a10428f9e8d9eca4d5331e4.r2.dev/Footage%20Web%20Desa.mov
 
 
 "
-                type="video/mp4"
-              />
-            </video>
-          </>
-        ) : (
-          <>
-            <img
-              src="/background.png"
-              className="-z-20 absolute inset-0 object-cover w-full h-full"
+              type="video/mp4"
             />
-          </>
-        )}
+          </video>
+        </>
       </CustomContainer>
     </section>
   );
