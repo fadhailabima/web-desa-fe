@@ -48,7 +48,7 @@ const PreviewBlog = () => {
             <h2 className="text-center text-2xl col-span-full">Tidak ada blog.</h2>
           )}
         </div>
-        {post.length > 0 && (
+        {post.length > 3 && (
           <div className="flex justify-center">
             <Link
               href="/blog"

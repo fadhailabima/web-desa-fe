@@ -49,7 +49,7 @@ const PreviewVideo = () => {
             <h2 className="text-center text-2xl col-span-full">Tidak ada kumpulan video.</h2>
           )}
         </div>
-        {video.length > 0 && (
+        {video.length > 3 && (
           <div className="flex justify-center">
             <Link
               href="/kumpulan-video"

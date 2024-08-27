@@ -38,6 +38,7 @@ const WisataPost = () => {
           <h1 className="text-4xl sm:text-5xl font-medium mb-10">
             {post.title}
           </h1>
+          <h1 className="text-xl text-gray-500">Oleh : {post.titleSm}</h1>
           <img
             src={`${post.image_url}`}
             alt={post.title}

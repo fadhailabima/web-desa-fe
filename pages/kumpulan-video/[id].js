@@ -46,7 +46,7 @@ const VideoPost = () => {
             {post.title}
           </h1>
           <h2 className="text-base text-gray-500">{formattedDate}</h2>
-          <h1 className="text-xl text-gray-500">{post.titleSm}</h1>
+          <h1 className="text-xl text-gray-500">Oleh : {post.titleSm}</h1>
           <video
             controls
             src={post.video}
