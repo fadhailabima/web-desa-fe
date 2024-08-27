@@ -90,21 +90,21 @@ const TambahUser = ({ isAdmin }) => {
                 required
               />
             </div>
-            <div className="mb-6 flex flex-col">
+            <div className="mb-6 flex flex-col relative">
               <label className="mb-2 text-sm font-medium text-black">
                 Password
                 <span className="text-red-500">*</span>
               </label>
               <input
                 type={see ? "text" : "password"}
-                className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
+                className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary pr-10"
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
               <button
                 type="button"
-                className="absolute top-2.5 right-2 bg-transparent border-none text-3xl text-gray-300 flex justify-center items-center ml-2 cursor-pointer"
+                className="absolute inset-y-0 right-0 flex items-center px-4 cursor-pointer mt-6 bg-transparent text-gray-300"
                 onClick={() => setSee(!see)}
               >
                 <FaEye />

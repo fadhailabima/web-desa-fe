@@ -119,7 +119,7 @@ const UpdateVideo = ({ id, isAdmin }) => {
             </div>
             <div className="mb-6 flex flex-col">
               <label className="mb-2 text-sm font-medium text-black">
-                Judul Halaman : <span className="text-red-500">*</span>
+                Nama Penulis : <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"

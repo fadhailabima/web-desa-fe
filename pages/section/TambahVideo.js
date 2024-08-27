@@ -104,7 +104,7 @@ const TambahVideo = ({ isAdmin }) => {
               <input
                 type="text"
                 className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
-                placeholder="Judul Halaman"
+                placeholder="Nama Penulis"
                 onChange={(e) => setTitleSm(e.target.value)}
                 required
               />
