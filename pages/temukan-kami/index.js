@@ -6,6 +6,13 @@ import NavbarPadder from "@/components/navbarPadder";
 import TopBlur from "@/components/topBlur";
 import dynamic from "next/dynamic";
 import { getKategoriMapPublic, getAllMap } from "@/services/map";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const MapsPublic = dynamic(() => import("@/components/mapsPublic"), {
   ssr: false,
@@ -42,6 +49,10 @@ const temukanKami = () => {
     setSelectedKategori(event.target.value);
   };
 
+  useEffect(() => {
+    console;
+  }, []);
+
   const filteredLokasi =
     selectedKategori === "all"
       ? lokasi
@@ -54,15 +65,26 @@ const temukanKami = () => {
       <TopBlur />
       <CustomContainer>
         <div className="container z-30 m-5 mx-auto w-full">
-          <select onChange={handleSelectChange}>
-            <option value="all">Semua Kategori</option>
-            {kategoriMap.map((kategori, index) => (
-              <option key={index} value={kategori.id}>
-                {kategori.kategori_lokasi}
-              </option>
-            ))}
-          </select>
-          <MapsPublic data={filteredLokasi} />
+          {filteredLokasi.length > 0 ? (
+            <>
+              <Select onChange={handleSelectChange}>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Select Filter" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">Semua Kategori</SelectItem>
+                  {kategoriMap.map((kategori, index) => (
+                    <SelectItem key={index} value={kategori.id}>
+                      {kategori.kategori_lokasi}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <MapsPublic data={filteredLokasi} />
+            </>
+          ) : (
+            <h2 className="text-center text-2xl">Tidak ada titik lokasi.</h2>
+          )}
         </div>
       </CustomContainer>
     </section>
