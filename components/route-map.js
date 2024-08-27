@@ -47,7 +47,7 @@ export default function MapWithRouting({ data }) {
         <MapContainer
             center={[position.lat, position.lng]}
             zoom={13}
-            style={{ height: "80vh", width: "100%" }}
+            style={{ height: "80vh", width: "100%", zIndex: "1" }}
         >
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
             <RoutingMachine position={position} data={data} />

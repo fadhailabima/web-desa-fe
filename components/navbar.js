@@ -40,7 +40,7 @@ const Navbar = () => {
       }`}
     >
       <CustomContainer>
-        <div className="flex justify-between">
+        <div className="flex justify-between" style={{zIndex: "500"}}>
           <div className="flex pt-[21px] pb-[23px]">
             <img
               src="https://pub-42bc368a5a10428f9e8d9eca4d5331e4.r2.dev/rembang-logo.png"

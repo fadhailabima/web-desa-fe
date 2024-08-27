@@ -44,7 +44,7 @@ const routeMap = () => {
       <NavbarPadder />
       <TopBlur />
       <CustomContainer>
-        <div className="container z-30 m-5 mx-auto w-full">
+        <div className="container m-5 mx-auto w-full">
           <MapWithRouting position={position} data={lokasi} />
         </div>
       </CustomContainer>

@@ -49,10 +49,6 @@ const temukanKami = () => {
     setSelectedKategori(event.target.value);
   };
 
-  useEffect(() => {
-    console;
-  }, []);
-
   const filteredLokasi =
     selectedKategori === "all"
       ? lokasi
@@ -80,7 +76,9 @@ const temukanKami = () => {
                   ))}
                 </SelectContent>
               </Select>
-              <MapsPublic data={filteredLokasi} />
+              <div className="my-5">
+                <MapsPublic data={filteredLokasi} />
+              </div>
             </>
           ) : (
             <h2 className="text-center text-2xl">Tidak ada titik lokasi.</h2>
