@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import CustomContainer from "@/components/customContainer";
 import Link from "next/link";
 import NavbarPadder from "@/components/navbarPadder";
-import { hero } from "../data";
 
 const Hero = () => {
   const [isVideo, setIsVideo] = useState(true);
