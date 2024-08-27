@@ -40,10 +40,10 @@ const Navbar = () => {
       }`}
     >
       <CustomContainer>
-        <div className="flex justify-between" style={{zIndex: "500"}}>
+        <div className="flex justify-between" style={{ zIndex: "500" }}>
           <div className="flex pt-[21px] pb-[23px]">
             <img
-              src="https://pub-42bc368a5a10428f9e8d9eca4d5331e4.r2.dev/rembang-logo.png"
+              src="https://pub-266a9ebc4feb4ee1bbca8fde3e6a8744.r2.dev/WhatsApp%20Image%202024-08-27%20at%2023.44.31.jpeg"
               alt="logo kabupaten rembang"
               className="w-[61px]"
             />
@@ -117,7 +117,7 @@ const Navbar = () => {
                   <SheetTitle>
                     <div className="flex pt-[21px] pb-[23px]">
                       <img
-                        src="https://pub-42bc368a5a10428f9e8d9eca4d5331e4.r2.dev/rembang-logo.png"
+                        src="https://pub-266a9ebc4feb4ee1bbca8fde3e6a8744.r2.dev/WhatsApp%20Image%202024-08-27%20at%2023.44.31.jpeg"
                         alt="logo kabupaten rembang"
                         className="w-[61px]"
                       />
