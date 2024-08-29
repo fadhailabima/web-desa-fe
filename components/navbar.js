@@ -126,7 +126,7 @@ const Navbar = () => {
                       <img
                         src="https://pub-266a9ebc4feb4ee1bbca8fde3e6a8744.r2.dev/WhatsApp%20Image%202024-08-27%20at%2023.44.31.jpeg"
                         alt="logo kabupaten rembang"
-                        className="w-[71px]"
+                        className="w-[121px]"
                       />
                       <img
                         src="https://pub-42bc368a5a10428f9e8d9eca4d5331e4.r2.dev/logo%20kkn%20punjulharjo%201%20foto.png"
