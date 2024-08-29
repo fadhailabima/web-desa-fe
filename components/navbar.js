@@ -13,10 +13,13 @@ import { IoHome } from "react-icons/io5";
 import { FaInfoCircle } from "react-icons/fa";
 import { BiSolidVideos } from "react-icons/bi";
 import { IoIosDocument } from "react-icons/io";
+import { IoIosMap } from "react-icons/io";
+import { IoIosImages } from "react-icons/io";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,6 +33,10 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleMenuClick = (href) => {
+    setIsMenuOpen(false);
+  };
 
   return (
     <section
@@ -45,7 +52,7 @@ const Navbar = () => {
             <img
               src="https://pub-266a9ebc4feb4ee1bbca8fde3e6a8744.r2.dev/WhatsApp%20Image%202024-08-27%20at%2023.44.31.jpeg"
               alt="logo kabupaten rembang"
-              className="w-[71px]"
+              className="w-[121px]"
             />
             <img
               src="https://pub-42bc368a5a10428f9e8d9eca4d5331e4.r2.dev/logo%20kkn%20punjulharjo%201%20foto.png"
@@ -102,7 +109,7 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="block lg:hidden">
-            <Sheet>
+            <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <SheetTrigger className="pt-[51px] pb-[50px]">
                 <div
                   className={`text-2xl py-1 px-2 ${
@@ -132,7 +139,11 @@ const Navbar = () => {
                     <div className="flex flex-col items-center">
                       <div className="flex my-4 font-medium items-center text-2xl text-primary bg-gray-100 px-4 py-2 rounded-lg">
                         <IoHome />
-                        <Link href="/" className="ml-2">
+                        <Link
+                          href="/"
+                          onClick={() => handleMenuClick("/")}
+                          className="ml-2"
+                        >
                           Beranda
                         </Link>
                       </div>
@@ -140,31 +151,59 @@ const Navbar = () => {
                     <div className="flex flex-col items-center">
                       <div className="flex my-4 font-medium items-center text-2xl text-primary bg-gray-100 px-4 py-2 rounded-lg">
                         <FaInfoCircle />
-                        <Link href="/tentang" className="ml-2">
+                        <Link
+                          href="/tentang"
+                          onClick={() => handleMenuClick("/tentang")}
+                          className="ml-2"
+                        >
                           Tentang
                         </Link>
                       </div>
                     </div>
                     <div className="flex flex-col items-center">
                       <div className="flex my-4 font-medium items-center text-2xl text-primary bg-gray-100 px-4 py-2 rounded-lg">
+                        <IoIosImages />
+                        <Link
+                          href="/explore-wisata"
+                          onClick={() => handleMenuClick("/explore-wisata")}
+                          className="ml-2"
+                        >
+                          Explore Wisata
+                        </Link>
+                      </div>
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <div className="flex my-4 font-medium items-center text-2xl text-primary bg-gray-100 px-4 py-2 rounded-lg">
                         <BiSolidVideos />
-                        <Link href="/kumpulan-video" className="ml-2">
-                          Kumpulan Video
+                        <Link
+                          href="/kumpulan-video"
+                          onClick={() => handleMenuClick("/kumpulan-video")}
+                          className="ml-2"
+                        >
+                          Video
                         </Link>
                       </div>
                     </div>
                     <div className="flex flex-col items-center">
                       <div className="flex my-4 font-medium items-center text-2xl text-primary bg-gray-100 px-4 py-2 rounded-lg">
                         <IoIosDocument />
-                        <Link href="/blog" className="ml-2">
+                        <Link
+                          href="/blog"
+                          onClick={() => handleMenuClick("/blog")}
+                          className="ml-2"
+                        >
                           Blog
                         </Link>
                       </div>
                     </div>
                     <div className="flex flex-col items-center">
                       <div className="flex my-4 font-medium items-center text-2xl text-primary bg-gray-100 px-4 py-2 rounded-lg">
-                        <IoIosDocument />
-                        <Link href="/temukan-kami" className="ml-2">
+                        <IoIosMap />
+                        <Link
+                          href="/temukan-kami"
+                          onClick={() => handleMenuClick("temukan-kami")}
+                          className="ml-2"
+                        >
                           Temukan Kami
                         </Link>
                       </div>
