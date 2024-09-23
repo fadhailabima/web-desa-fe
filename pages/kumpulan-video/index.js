@@ -38,7 +38,7 @@ const KumpulanVideo = () => {
                 className="border-2 p-7 rounded-lg flex items-center flex-col gap-3"
               >
                 <VideoPlayer
-                  src={`${data.video}`}
+                  src={`${data.video_url}`}
                   className="max-w-[100%] h-[270px] rounded-lg"
                 />
                 <h1 className="text-2xl font-medium">{data.title}</h1>

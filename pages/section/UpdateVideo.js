@@ -26,6 +26,7 @@ const UpdateVideo = ({ id, isAdmin }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [popupText, setPopupText] = useState("");
   const [popupType, setPopupType] = useState("");
+  const [uploading, setUploading] = useState(false);
   const router = useRouter();
   const quillRef = useRef(null);
 
@@ -44,7 +45,11 @@ const UpdateVideo = ({ id, isAdmin }) => {
     if (content) updateData.content = content;
     if (video) updateData.video = video;
     if (inputDate) updateData.inputDate = inputDate;
+    setLoading(true);
+    setUploading(true); // Mulai unggahan
     const res = await editVideo(token, id, updateData);
+    setLoading(false);
+    setUploading(false); // Selesai unggahan
     if (res) {
       console.log("Video updated:", res);
       setPopupText("Video Berhasil Diupdate");
@@ -80,6 +85,10 @@ const UpdateVideo = ({ id, isAdmin }) => {
       fetchVideo();
     }
   }, [id, token]);
+
+  const handleFileChangeVideo = (e) => {
+    setVideo(e.target.files[0]);
+  };
 
   return (
     <main>
@@ -165,14 +174,13 @@ const UpdateVideo = ({ id, isAdmin }) => {
             </div>
             <div className="mb-6 flex flex-col">
               <label className="mb-2 text-sm font-medium text-black">
-                Link Video (Format MP4) :{" "}
-                <span className="text-red-500">*</span>
+                Video (Maks 600mb) : <span className="text-red-500">*</span>
               </label>
               <input
-                type="text"
+                type="file"
+                accept="video/*"
                 className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
-                value={video}
-                onChange={(e) => setVideo(e.target.value)}
+                onChange={handleFileChangeVideo}
               />
             </div>
             <div>
@@ -181,7 +189,11 @@ const UpdateVideo = ({ id, isAdmin }) => {
                 type="submit"
                 disabled={loading}
               >
-                {loading ? "Saving..." : "Save"}
+                {loading
+                  ? "Saving..."
+                  : uploading
+                  ? "Uploading video..."
+                  : "Save"}
               </button>
             </div>
           </form>

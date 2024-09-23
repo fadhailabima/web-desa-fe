@@ -131,9 +131,9 @@ const Video = ({ isAdmin }) => {
                         <th className="text-center py-3 text-xs font-medium tracking-wider text-black uppercase">
                           Description
                         </th>
-                        <th className="text-center py-3 text-xs font-medium tracking-wider text-black uppercase">
+                        {/* <th className="text-center py-3 text-xs font-medium tracking-wider text-black uppercase">
                           Link Video
-                        </th>
+                        </th> */}
                         <th className="text-center py-3 text-xs font-medium tracking-wider text-black uppercase">
                           Created Date
                         </th>
@@ -176,9 +176,9 @@ const Video = ({ isAdmin }) => {
                                 Lihat Deskripsi
                               </button>
                             </td>
-                            <td className="text-center py-4 text-sm text-black">
+                            {/* <td className="text-center py-4 text-sm text-black">
                               <span className="break-word">{item.video}</span>
-                            </td>
+                            </td> */}
                             <td className="text-center py-4 text-sm text-black">
                               {item.inputDate}
                             </td>

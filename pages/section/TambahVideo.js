@@ -24,6 +24,7 @@ const TambahVideo = ({ isAdmin }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [popupText, setPopupText] = useState("");
   const [popupType, setPopupType] = useState("");
+  const [uploading, setUploading] = useState(false);
   const router = useRouter();
 
   const handleAddVideo = async (e) => {
@@ -35,6 +36,8 @@ const TambahVideo = ({ isAdmin }) => {
       return;
     }
     const token = localStorage.getItem("token");
+    setLoading(true);
+    setUploading(true); // Mulai unggahan
     const res = await createVideo(
       token,
       title,
@@ -44,6 +47,8 @@ const TambahVideo = ({ isAdmin }) => {
       video,
       inputDate
     );
+    setLoading(false);
+    setUploading(false); // Selesai unggahan
     if (res) {
       console.log("Blog added:", res);
       setPopupText("Video Berhasil Ditambah");
@@ -53,11 +58,15 @@ const TambahVideo = ({ isAdmin }) => {
         router.push("/video");
       }, 1500);
     } else {
-      console.log("Failed to add ios");
+      console.log("Failed to add video");
       setPopupText("Video Gagal Ditambahkan");
       setPopupType("error");
       setShowPopup(true);
     }
+  };
+
+  const handleFileChange = (e) => {
+    setVideo(e.target.files[0]);
   };
 
   return (
@@ -146,14 +155,13 @@ const TambahVideo = ({ isAdmin }) => {
             </div>
             <div className="mb-6 flex flex-col">
               <label className="mb-2 text-sm font-medium text-black">
-                Link Video (Format MP4) :{" "}
-                <span className="text-red-500">*</span>
+                Video (Maks 600mb) : <span className="text-red-500">*</span>
               </label>
               <input
-                type="text"
+                type="file"
+                accept="video/*"
                 className="p-2 border-gray-300 border rounded-md w-full transition-colors duration-300 hover:border-primary"
-                placeholder="Link Video"
-                onChange={(e) => setVideo(e.target.value)}
+                onChange={handleFileChange}
                 required
               />
             </div>
@@ -163,7 +171,11 @@ const TambahVideo = ({ isAdmin }) => {
                 type="submit"
                 disabled={loading}
               >
-                {loading ? "Saving..." : "Save"}
+                {loading
+                  ? "Saving..."
+                  : uploading
+                  ? "Uploading video..."
+                  : "Save"}
               </button>
             </div>
           </form>

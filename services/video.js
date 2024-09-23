@@ -55,55 +55,55 @@ export const createVideo = async (
   video,
   inputDate
 ) => {
-  const data = {
-    title,
-    titleSm,
-    subtitleSm,
-    content,
-    video,
-    inputDate,
-  };
+  const formData = new FormData();
+  formData.append('title', title);
+  formData.append('titleSm', titleSm);
+  formData.append('subtitleSm', subtitleSm);
+  formData.append('content', content);
+  formData.append('video', video);
+  formData.append('inputDate', inputDate);
+
   try {
     const res = await axios.post(
       "https://apiku.desawisatapunjulharjo.com/api/videos",
-      data,
+      formData,
       {
         headers: {
           Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
+          "Content-Type": "multipart/form-data",
         },
       }
     );
     if (res.data) {
-      // console.log("Ios added:", res.data);
+      // console.log("Video added:", res.data);
       return res.data;
     } else {
       // console.log("No response from server");
       return null;
     }
   } catch (error) {
-    console.error("An error occurred while adding the Ios:", error);
+    console.error("An error occurred while adding the video:", error);
     return null;
   }
 };
 
 export const editVideo = async (token, id, updateData) => {
-  // Create a new object and add only the fields that are not null or undefined
-  const filteredData = {};
+  const formData = new FormData();
+
   for (let key in updateData) {
     if (updateData[key] != null) {
-      filteredData[key] = updateData[key];
+      formData.append(key, updateData[key]);
     }
   }
 
   try {
     const res = await axios.post(
       `https://apiku.desawisatapunjulharjo.com/api/videos/${id}`,
-      filteredData,
+      formData,
       {
         headers: {
           Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
+          "Content-Type": "multipart/form-data",
         },
       }
     );

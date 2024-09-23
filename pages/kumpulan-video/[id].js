@@ -49,7 +49,7 @@ const VideoPost = () => {
           <h1 className="text-xl text-gray-500">Oleh : {post.titleSm}</h1>
           <video
             controls
-            src={post.video}
+            src={post.video_url}
             className="w-2/3 h-auto rounded-lg my-5 mx-auto"
           />
           <div className="text-center">
