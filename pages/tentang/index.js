@@ -49,7 +49,7 @@ const tentang = () => {
             </div>
           </div>
           <div className="flex lg:flex-row flex-col-reverse my-12">
-            <div className="lg:min-w-[35%]">
+            <div className="lg:min-w-[45%]">
               <img
                 src="/boat.jpeg"
                 alt="boat"
@@ -61,13 +61,18 @@ const tentang = () => {
                 Sejarah Desa Punjulharjo
               </h1>
               <p className="text-base my-4 border-primary border-l-8 pl-5">
-                Desa Punjulharjo adalah bukti nyata bahwa Indonesia memiliki
-                kekayaan sejarah dan budaya yang sangat luar biasa. Penemuan
-                perahu kuno telah membuka mata dunia akan pentingnya wilayah
-                Nusantara dalam sejarah peradaban maritim. Dengan potensi wisata
-                yang sangat besar, Desa Punjulharjo diharapkan dapat menjadi
-                salah satu destinasi wisata sejarah yang paling populer di
-                Indonesia.
+                Desa Punjulharjo menyimpan khazanah budaya yang menggema sebagai
+                simbol kebanggaan yang terjalin dari identitas luhur desa.
+                Kesenian tari tradisional maupun modern bertransformasi menjadi
+                jejak warisan yang terus dilestarikan. Tari Kepak Punjulharjo
+                melukiskan filosofi kehidupan warga desa dengan gerakan tarinya
+                terinspirasi dari keseharian masyarakat pesisir. Sedangkan Tari
+                Kreasi Andrawina, sebagai tarian baru, hadir sebagai simbol
+                dinamika perubahan Desa Punjulharjo. Dengan penuh semangat,
+                tarian ini menggambarkan dedikasi masyarakat dalam
+                mempertahankan tradisi, khususnya garam yang menjadi mata
+                pencaharian utama, sembari menggambarkan upaya teguh penduduk
+                dalam merajut masa depan demi kemajuan desa.
               </p>
             </div>
           </div>
